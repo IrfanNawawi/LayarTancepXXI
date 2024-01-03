@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "LayarTancepXXI"
 include(":app")
 include(":styling")
+include(":core")
