@@ -9,7 +9,7 @@ object AndroidProjectConfig {
     const val targetSdk = 32
     const val versionCode = 1
     const val versionName = "1.0"
-    const val applicationId = "com.catnip.myflix"
+    const val applicationId = "id.heycoding.layartancepxxi"
 }
 
 object Libraries {
