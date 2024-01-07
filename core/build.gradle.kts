@@ -36,6 +36,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    buildFeatures {
+        buildConfig = true
+    }
     flavorDimensions += listOf("default")
     productFlavors {
         create("production") {
@@ -81,6 +84,6 @@ dependencies {
     //coil
     api(Libraries.coil)
 
-    //core module
+    //styling module
     api(project(":styling"))
 }
