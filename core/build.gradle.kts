@@ -35,8 +35,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-    }
-    buildFeatures {
         buildConfig = true
     }
     flavorDimensions += listOf("default")
@@ -50,6 +48,7 @@ android {
 }
 
 dependencies {
+
     api(Libraries.androidxCoreKtx)
     api(Libraries.androidxAppcompat)
     api(Libraries.googleAndroidMaterial)
@@ -84,6 +83,7 @@ dependencies {
     //coil
     api(Libraries.coil)
 
-    //styling module
+
+    //core module
     api(project(":styling"))
 }
