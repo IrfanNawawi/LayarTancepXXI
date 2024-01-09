@@ -36,5 +36,6 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":shared"))
+    implementation(project(":feature:splashscreen"))
 }

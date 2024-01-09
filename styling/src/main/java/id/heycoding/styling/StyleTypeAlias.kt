@@ -1,7 +1,5 @@
 package id.heycoding.styling
 
-import id.heycoding.layartancepxxi.R
-
 
 /**
  * Created by Irfan Nawawi on 07/01/24.

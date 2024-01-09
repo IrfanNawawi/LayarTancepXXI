@@ -2,7 +2,6 @@ package id.heycoding.shared.utils
 
 import android.content.Context
 import android.widget.ArrayAdapter
-import id.heycoding.layartancepxxi.R
 import id.heycoding.styling.ProjectArray
 import id.heycoding.styling.ProjectLayout
 

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = AndroidProjectConfig.applicationId
+    namespace = "id.heycoding.shared"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {

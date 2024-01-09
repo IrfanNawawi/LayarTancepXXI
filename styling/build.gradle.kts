@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = AndroidProjectConfig.applicationId
+    namespace = "id.heycoding.styling"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {

@@ -1,7 +1,7 @@
 package id.heycoding.shared.data.remote
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import id.heycoding.layartancepxxi.BuildConfig
+import id.heycoding.core.BuildConfig
 import id.heycoding.shared.domain.GetUserTokenUseCase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
