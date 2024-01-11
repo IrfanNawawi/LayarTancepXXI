@@ -18,10 +18,9 @@ import kotlinx.coroutines.flow.flow
  * heycoding.tech
  * heycoding@gmail.com
  */
-
 typealias SyncResult = Pair<Boolean, UserViewParam?>
 
-class  SyncUserUseCase(
+class SyncUserUseCase(
     private val splashScreenRepository: SplashScreenRepository,
     private val userPreferenceRepository: UserPreferenceRepository,
     dispatcher: CoroutineDispatcher

@@ -83,7 +83,6 @@ dependencies {
     //coil
     api(Libraries.coil)
 
-
     //core module
     api(project(":styling"))
 }

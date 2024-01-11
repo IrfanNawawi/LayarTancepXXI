@@ -2,6 +2,7 @@ package id.heycoding.layartancepxxi
 
 import android.app.Application
 import id.heycoding.layartancepxxi.di.AppModules
+import id.heycoding.login.di.LoginModules
 import id.heycoding.shared.di.SharedModules
 import id.heycoding.splashscreen.di.SplashScreenModules
 import org.koin.android.ext.koin.androidContext
@@ -22,8 +23,9 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 AppModules.getModules() +
-                SharedModules.getModules() +
-                SplashScreenModules.getModules()
+                        SharedModules.getModules() +
+                        SplashScreenModules.getModules() +
+                        LoginModules.getModules()
             )
         }
     }

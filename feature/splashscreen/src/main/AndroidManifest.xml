@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:theme="@style/MyFlix.NoActionBar"
+            android:theme="@style/LayarTancepXXI.NoActionBar"
             android:name=".presentation.SplashScreenActivity"
             android:exported="true" >
             <intent-filter>

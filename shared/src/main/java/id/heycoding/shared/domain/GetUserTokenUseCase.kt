@@ -21,7 +21,7 @@ class GetUserTokenUseCase(
 ) : BaseUseCase<Nothing, String>(dispatcher) {
     override suspend fun execute(param: Nothing?): Flow<ViewResource<String>> {
         return flow {
-            repository.getUserToken().map {
+            repository.getUserToken().collect {
                 it.suspendSubscribe(doOnSuccess = { result ->
                     emit(ViewResource.Success(result.payload.orEmpty()))
                 }, doOnError = { error ->

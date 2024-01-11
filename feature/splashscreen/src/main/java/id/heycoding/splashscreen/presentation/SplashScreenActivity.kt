@@ -14,12 +14,10 @@ import org.koin.android.ext.android.inject
 
 class SplashScreenActivity :
     BaseActivity<ActivitySplashScreenBinding, SplashScreenViewModel>(ActivitySplashScreenBinding::inflate) {
-
     override val viewModel: SplashScreenViewModel by inject()
-    val activityRouter: ActivityRouter by inject()
+    private val activityRouter: ActivityRouter by inject()
 
     override fun initView() {
-        Log.d("Splash Screen", "Masuk sini")
         viewModel.syncUser()
     }
 
@@ -41,7 +39,6 @@ class SplashScreenActivity :
     }
 
     private fun navigateToHome() {
-        Toast.makeText(this, "Navigate to Home", Toast.LENGTH_SHORT).show()
         startActivity(activityRouter.homeActivity(this).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         })
@@ -49,7 +46,6 @@ class SplashScreenActivity :
     }
 
     private fun navigateToLogin() {
-        Toast.makeText(this, "Navigate to Login", Toast.LENGTH_SHORT).show()
         startActivity(activityRouter.loginActivity(this).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         })
