@@ -51,36 +51,36 @@ jobs:
       #   run: ./gradlew build
 
       # Create APK Debug
-      - name: Build apk debug project (APK) - $main_project_module
+      - name: Build apk debug project (APK) - app
         run: ./gradlew assembleDebug
 
       # Create APK Release
-      - name: Build apk release project (APK) - $main_project_module
+      - name: Build apk release project (APK) - app
         run: ./gradlew assembleRelease
 
       # Create Bundle AAB Release
       # Noted for main module build [main_project_module]:bundleRelease
-      - name: Build app bundle release (AAB) - $main_project_module
-        run: ./gradlew $main_project_module:bundleRelease
+      - name: Build app bundle release (AAB) - app
+        run: ./gradlew app:bundleRelease
 
       # Upload Artifact Build
       # Noted For Output [main_project_module]/build/outputs/apk/debug/
-      - name: Upload APK Debug - $main_project_module
+      - name: Upload APK Debug - app
         uses: actions/upload-artifact@v3
         with:
           name: $ - $ - $ - APK(s) debug generated
-          path: $main_project_module/build/outputs/apk/debug/
+          path: app/build/outputs/apk/debug/
 
       # Noted For Output [main_project_module]/build/outputs/apk/release/
-      - name: Upload APK Release - $main_project_module
+      - name: Upload APK Release - app
         uses: actions/upload-artifact@v3
         with:
           name: $ - $ - $ - APK(s) release generated
-          path: $main_project_module/build/outputs/apk/release/
+          path: app/build/outputs/apk/release/
 
       # Noted For Output [main_project_module]/build/outputs/bundle/release/
-      - name: Upload AAB (App Bundle) Release - $main_project_module
+      - name: Upload AAB (App Bundle) Release - app
         uses: actions/upload-artifact@v3
         with:
           name: $ - $ - $ - App bundle(s) AAB release generated
-          path: $main_project_module/build/outputs/bundle/release/
+          path: app/build/outputs/bundle/release/
