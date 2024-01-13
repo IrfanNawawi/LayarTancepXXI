@@ -23,21 +23,8 @@ on:
 jobs:
   
   job1:
-    name: Perform lint check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4.1.1
-
-      - name: Upload html test report
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: lint.html
-          path: app/build/reports/lint-results-debug.html
-  job2:
     name: Remove Old Artifacts
     runs-on: ubuntu-latest
-    needs: job1
     steps:
       - name: Clean all artifacts
         uses: c-hive/gha-remove-artifacts@v1
@@ -46,10 +33,10 @@ jobs:
           # Optional inputs
           # skip-tags: true
           # skip-recent: 5
-  job3:
+  job2:
     name: Build Generated APK AAB to Artifacts
     runs-on: ubuntu-latest
-    needs: job2
+    needs: job1
     steps:
       - uses: actions/checkout@v3
   
