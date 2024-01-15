@@ -7,7 +7,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import id.heycoding.login.R
-import id.heycoding.login.utils.LoginFieldConstants
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_EMAIL
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_PASSWORD
 import id.heycoding.shared.utils.StringUtils
@@ -21,10 +20,10 @@ import id.heycoding.shared.utils.StringUtils
 typealias CheckFieldLoginResult = List<Pair<Int, Int>>
 
 class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) :
-    BaseUseCase<LoginUserUseCase.Param, CheckFieldLoginResult>(dispatcher) {
-    override suspend fun execute(param: LoginUserUseCase.Param?): Flow<ViewResource<CheckFieldLoginResult>> {
+    BaseUseCase<LoginUserUseCase.LoginParam, CheckFieldLoginResult>(dispatcher) {
+    override suspend fun execute(loginParam: LoginUserUseCase.LoginParam?): Flow<ViewResource<CheckFieldLoginResult>> {
       return flow {
-          param?.let { p ->
+          loginParam?.let { p ->
               val result = mutableListOf<Pair<Int, Int>>()
               checkIsEmailValid(p.email)?.let {
                   result.add(it)

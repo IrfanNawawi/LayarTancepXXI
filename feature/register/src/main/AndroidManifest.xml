@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".presentation.LoginActivity"
+            android:name=".presentation.RegisterActivity"
             android:exported="false"
             android:theme="@style/LayarTancepXXI.NoActionBar"/>
     </application>
