@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import id.heycoding.home.presentation.ui.HomeActivity
 import id.heycoding.login.presentation.LoginActivity
+import id.heycoding.register.presentation.RegisterActivity
 import id.heycoding.shared.router.ActivityRouter
 
 
@@ -19,5 +20,9 @@ class ActivityRouterImpl: ActivityRouter {
 
     override fun homeActivity(context: Context): Intent {
         return Intent(context, HomeActivity::class.java)
+    }
+
+    override fun registerActivity(context: Context): Intent {
+        return Intent(context, RegisterActivity::class.java)
     }
 }

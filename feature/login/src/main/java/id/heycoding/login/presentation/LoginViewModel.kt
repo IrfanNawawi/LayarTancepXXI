@@ -19,7 +19,7 @@ class LoginViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel
 
     fun loginUser(email: String, password: String) {
         viewModelScope.launch {
-            loginUserUseCase(LoginUserUseCase.Param(email, password)).collect {
+            loginUserUseCase(LoginUserUseCase.LoginParam(email = email, password = password)).collect {
                 loginResult.postValue(it)
             }
         }

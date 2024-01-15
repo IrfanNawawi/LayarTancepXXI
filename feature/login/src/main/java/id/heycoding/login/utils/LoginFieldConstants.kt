@@ -7,6 +7,6 @@ package id.heycoding.login.utils
  * heycoding@gmail.com
  */
 object LoginFieldConstants {
-    const val FIELD_EMAIL = 1
-    const val FIELD_PASSWORD = 2
+    const val FIELD_EMAIL = 0
+    const val FIELD_PASSWORD = 1
 }
