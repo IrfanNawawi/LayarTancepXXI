@@ -14,7 +14,7 @@ interface SplashScreenDataSource {
     suspend fun doUserSync(): BaseResponse<SyncResponse>
 }
 
-class SplashScreenDataSourceImpl(val service: SplashScreenFeatureApi): SplashScreenDataSource {
+class SplashScreenDataSourceImpl(val service: SplashScreenFeatureApi) : SplashScreenDataSource {
     override suspend fun doUserSync(): BaseResponse<SyncResponse> {
         return service.doUserSync()
     }

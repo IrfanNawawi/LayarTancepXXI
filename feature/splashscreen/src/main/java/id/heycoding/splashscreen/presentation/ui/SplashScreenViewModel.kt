@@ -1,4 +1,4 @@
-package id.heycoding.splashscreen.presentation
+package id.heycoding.splashscreen.presentation.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

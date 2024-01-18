@@ -8,7 +8,7 @@ import id.heycoding.register.data.repository.RegisterRepository
 import id.heycoding.register.data.repository.RegisterRepositoryImpl
 import id.heycoding.register.domain.CheckRegisterFieldUseCase
 import id.heycoding.register.domain.RegisterUserUseCase
-import id.heycoding.register.presentation.RegisterViewModel
+import id.heycoding.register.presentation.ui.RegisterViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -25,14 +25,15 @@ object RegisterModules : FeatureModules {
     override fun getModules(): List<Module> = listOf(
         repositories, viewModels, dataSources, useCases, network
     )
+
     override val repositories: Module = module {
-        single<RegisterRepository> { RegisterRepositoryImpl(get())}
+        single<RegisterRepository> { RegisterRepositoryImpl(get()) }
     }
     override val viewModels: Module = module {
         viewModelOf(::RegisterViewModel)
     }
     override val dataSources: Module = module {
-        single<RegisterDataSource> { RegisterDataSourceImpl(get())}
+        single<RegisterDataSource> { RegisterDataSourceImpl(get()) }
     }
     override val useCases: Module = module {
         single { CheckRegisterFieldUseCase(Dispatchers.IO) }

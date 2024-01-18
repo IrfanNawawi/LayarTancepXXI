@@ -1,14 +1,10 @@
-package id.heycoding.splashscreen.presentation
+package id.heycoding.splashscreen.presentation.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import id.heycoding.core.base.BaseActivity
 import id.heycoding.shared.router.ActivityRouter
 import id.heycoding.shared.utils.ext.subscribe
-import id.heycoding.splashscreen.R
 import id.heycoding.splashscreen.databinding.ActivitySplashScreenBinding
 import org.koin.android.ext.android.inject
 

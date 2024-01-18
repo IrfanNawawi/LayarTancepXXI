@@ -19,12 +19,13 @@ import java.util.concurrent.TimeUnit
  */
 class NetworkClient(
     val getUserTokenUseCase: GetUserTokenUseCase,
-    val chuckerInterceptor: ChuckerInterceptor) {
+    val chuckerInterceptor: ChuckerInterceptor
+) {
     inline fun <reified I> create(): I {
         val authInterceptor = Interceptor {
             val requestBuilder = it.request().newBuilder()
             runBlocking {
-                getUserTokenUseCase().first{ tokenResponse ->
+                getUserTokenUseCase().first { tokenResponse ->
                     val token = tokenResponse.payload
                     if (!token.isNullOrEmpty()) {
                         requestBuilder.addHeader("Authorization", "Beare $token")

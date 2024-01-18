@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.flow
  * heycoding@gmail.com
  */
 typealias RegisterDataResource = DataResource<BaseResponse<AuthResponse>>
+
 interface RegisterRepository {
     suspend fun registerUser(
         birthdate: String,
@@ -27,7 +28,8 @@ interface RegisterRepository {
     ): Flow<RegisterDataResource>
 }
 
-class RegisterRepositoryImpl(private val dataSource: RegisterDataSource): RegisterRepository, Repository() {
+class RegisterRepositoryImpl(private val dataSource: RegisterDataSource) : RegisterRepository,
+    Repository() {
     override suspend fun registerUser(
         birthdate: String,
         email: String,
@@ -36,7 +38,17 @@ class RegisterRepositoryImpl(private val dataSource: RegisterDataSource): Regist
         username: String
     ): Flow<RegisterDataResource> {
         return flow {
-            emit(safeNetworkCall { dataSource.registerUser(RegisterRequest(birthdate, email, gender, password, username)) })
+            emit(safeNetworkCall {
+                dataSource.registerUser(
+                    RegisterRequest(
+                        birthdate,
+                        email,
+                        gender,
+                        password,
+                        username
+                    )
+                )
+            })
         }
     }
 

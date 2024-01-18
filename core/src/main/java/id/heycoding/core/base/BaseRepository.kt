@@ -14,7 +14,7 @@ import java.io.IOException
  * heycoding@gmail.com
  */
 abstract class BaseRepository {
-    abstract fun <T> getErrorMessageFromApi(response : T) : String
+    abstract fun <T> getErrorMessageFromApi(response: T): String
 
     suspend fun <T> safeNetworkCall(apiCall: suspend () -> T): DataResource<T> {
         return try {
@@ -23,8 +23,15 @@ abstract class BaseRepository {
             when (throwable) {
                 is IOException -> DataResource.Error(NoInternetConnectionException())
                 is HttpException -> {
-                    DataResource.Error(ApiErrorException(getErrorMessageFromApi(throwable.response()?.errorBody()), throwable.code()))
+                    DataResource.Error(
+                        ApiErrorException(
+                            getErrorMessageFromApi(
+                                throwable.response()?.errorBody()
+                            ), throwable.code()
+                        )
+                    )
                 }
+
                 else -> {
                     DataResource.Error(UnexpectedErrorException())
                 }

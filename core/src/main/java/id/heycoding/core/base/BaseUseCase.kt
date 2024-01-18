@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
  * heycoding.tech
  * heycoding@gmail.com
  */
-abstract class BaseUseCase<P, R : Any?> constructor(private val dispatcher: CoroutineDispatcher) {
+abstract class BaseUseCase<P, R : Any?>(private val dispatcher: CoroutineDispatcher) {
     suspend operator fun invoke(param: P? = null): Flow<ViewResource<R>> {
         return execute(param)
             .catch { emit(ViewResource.Error(Exception(it))) }

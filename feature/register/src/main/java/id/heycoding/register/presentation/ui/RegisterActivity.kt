@@ -1,4 +1,4 @@
-package id.heycoding.register.presentation
+package id.heycoding.register.presentation.ui
 
 import android.content.Intent
 import androidx.core.view.isVisible

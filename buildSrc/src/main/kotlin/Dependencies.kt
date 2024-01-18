@@ -63,6 +63,7 @@ object Libraries {
         "androidx.datastore:datastore-preferences:${Versions.jetpackDatastore}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
     const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
-    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
+    const val swipeRefreshLayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
 
 }

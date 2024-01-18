@@ -1,4 +1,4 @@
-package id.heycoding.home.presentation.ui
+package id.heycoding.home.presentation.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

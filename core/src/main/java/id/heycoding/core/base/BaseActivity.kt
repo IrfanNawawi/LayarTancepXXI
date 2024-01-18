@@ -16,8 +16,8 @@ import java.lang.Exception
  * heycoding@gmail.com
  */
 abstract class BaseActivity<B : ViewBinding, VM : ViewModel>(
-    val bindingFactory : (LayoutInflater) -> B
-): AppCompatActivity() {
+    val bindingFactory: (LayoutInflater) -> B
+) : AppCompatActivity() {
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
@@ -32,11 +32,12 @@ abstract class BaseActivity<B : ViewBinding, VM : ViewModel>(
 
     abstract fun initView()
 
-    open fun observeData(){}
+    open fun observeData() {}
 
     fun showError(isErrorEnabled: Boolean, exception: Exception) {
         if (isErrorEnabled) {
-            Toast.makeText(this, this.getErrorMessageByException(exception), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, this.getErrorMessageByException(exception), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

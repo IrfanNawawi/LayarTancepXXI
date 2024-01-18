@@ -1,4 +1,4 @@
-package id.heycoding.login.presentation
+package id.heycoding.login.presentation.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,12 @@ class LoginViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel
 
     fun loginUser(email: String, password: String) {
         viewModelScope.launch {
-            loginUserUseCase(LoginUserUseCase.LoginParam(email = email, password = password)).collect {
+            loginUserUseCase(
+                LoginUserUseCase.LoginParam(
+                    email = email,
+                    password = password
+                )
+            ).collect {
                 loginResult.postValue(it)
             }
         }

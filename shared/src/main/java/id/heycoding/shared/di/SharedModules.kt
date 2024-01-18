@@ -14,6 +14,7 @@ import id.heycoding.shared.data.repository.SharedApiRepository
 import id.heycoding.shared.data.repository.SharedApiRepositoryImpl
 import id.heycoding.shared.data.repository.UserPreferenceRepository
 import id.heycoding.shared.data.repository.UserPreferenceRepositoryImpl
+import id.heycoding.shared.domain.GetCurrentUserUseCase
 import id.heycoding.shared.domain.GetUserTokenUseCase
 import id.heycoding.shared.domain.SaveAuthDataUseCase
 import kotlinx.coroutines.Dispatchers
@@ -27,15 +28,15 @@ import org.koin.dsl.module
  * heycoding.tech
  * heycoding@gmail.com
  */
-object SharedModules: BaseModules {
+object SharedModules : BaseModules {
     override fun getModules(): List<Module> = listOf(
         remote, local, dataSource, repository, sharedUseCase, common
     )
 
     private val remote = module {
-        single { ChuckerInterceptor.Builder(androidContext()).build()}
-        single { NetworkClient(get(), get())}
-        single<SharedFeatureApi> { get<NetworkClient>().create()}
+        single { ChuckerInterceptor.Builder(androidContext()).build() }
+        single { NetworkClient(get(), get()) }
+        single<SharedFeatureApi> { get<NetworkClient>().create() }
     }
 
     private val local = module {
@@ -44,17 +45,18 @@ object SharedModules: BaseModules {
 
     private val dataSource = module {
         single<UserPreferenceDataSource> { UserPreferenceDataSourceImpl(get(), get()) }
-        single<SharedFeatureApiDataSource> { SharedFeatureApiDataSourceImpl(get())}
+        single<SharedFeatureApiDataSource> { SharedFeatureApiDataSourceImpl(get()) }
     }
 
     private val repository = module {
-        single<UserPreferenceRepository> { UserPreferenceRepositoryImpl(get())}
-        single<SharedApiRepository> { SharedApiRepositoryImpl(get())}
+        single<UserPreferenceRepository> { UserPreferenceRepositoryImpl(get()) }
+        single<SharedApiRepository> { SharedApiRepositoryImpl(get()) }
     }
 
     private val sharedUseCase = module {
-        single { GetUserTokenUseCase(get(), Dispatchers.IO)}
+        single { GetUserTokenUseCase(get(), Dispatchers.IO) }
         single { SaveAuthDataUseCase(get(), Dispatchers.IO) }
+        single { GetCurrentUserUseCase(get(), Dispatchers.IO) }
     }
 
     private val common = module {

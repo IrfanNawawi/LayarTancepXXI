@@ -13,8 +13,8 @@ import org.koin.java.KoinJavaComponent.inject
  * heycoding.tech
  * heycoding@gmail.com
  */
-open class Repository: BaseRepository() {
-    private val gson : Gson by inject(Gson::class.java)
+open class Repository : BaseRepository() {
+    private val gson: Gson by inject(Gson::class.java)
     override fun <T> getErrorMessageFromApi(response: T): String {
         val responseBody = response as ResponseBody
         return try {

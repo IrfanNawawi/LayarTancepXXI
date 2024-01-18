@@ -25,15 +25,20 @@ class RegisterUserUseCase(
     private val saveAuthDataUseCase: SaveAuthDataUseCase,
     private val repository: RegisterRepository,
     dispatcher: CoroutineDispatcher
-) : BaseUseCase<RegisterUserUseCase.RegisterParam, UserViewParam?>(dispatcher){
+) : BaseUseCase<RegisterUserUseCase.RegisterParam, UserViewParam?>(dispatcher) {
     override suspend fun execute(param: RegisterParam?): Flow<ViewResource<UserViewParam?>> {
         return flow {
             mutateParam(param)?.let { p ->
                 emit(ViewResource.Loading())
                 checkRegisterFieldUseCase(p).first().suspendSubscribe(
                     doOnSuccess = { _ ->
-                        repository.registerUser(p.birtdate, p.email, p.gender, p.password, p.username).collect {
-                            registerResult ->
+                        repository.registerUser(
+                            p.birtdate,
+                            p.email,
+                            p.gender,
+                            p.password,
+                            p.username
+                        ).collect { registerResult ->
                             registerResult.suspendSubscribe(
                                 doOnSuccess = {
                                     val result = registerResult.payload?.data
@@ -45,7 +50,13 @@ class RegisterUserUseCase(
                                         ).collect {
                                             it.suspendSubscribe(
                                                 doOnSuccess = {
-                                                    emit(ViewResource.Success(UserMapper.toViewParam(user)))
+                                                    emit(
+                                                        ViewResource.Success(
+                                                            UserMapper.toViewParam(
+                                                                user
+                                                            )
+                                                        )
+                                                    )
                                                 },
                                                 doOnError = { error ->
                                                     emit(ViewResource.Error(error.exception))

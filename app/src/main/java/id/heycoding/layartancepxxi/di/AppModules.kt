@@ -12,7 +12,7 @@ import org.koin.dsl.module
  * heycoding.tech
  * heycoding@gmail.com
  */
-object AppModules: BaseModules {
+object AppModules : BaseModules {
     override fun getModules(): List<Module> = listOf(routers)
 
     val routers: Module = module {

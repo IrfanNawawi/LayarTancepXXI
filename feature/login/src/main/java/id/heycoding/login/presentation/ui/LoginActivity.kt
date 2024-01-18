@@ -1,20 +1,16 @@
-package id.heycoding.login.presentation
+package id.heycoding.login.presentation.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputLayout
 import id.heycoding.core.base.BaseActivity
 import id.heycoding.core.exception.FieldErrorException
-import id.heycoding.login.R
 import id.heycoding.login.databinding.ActivityLoginBinding
 import id.heycoding.login.utils.LoginFieldConstants
 import id.heycoding.shared.router.ActivityRouter
 import id.heycoding.shared.utils.ext.subscribe
 import id.heycoding.shared.utils.listen
 import org.koin.android.ext.android.inject
-import java.lang.Exception
 
 class LoginActivity :
     BaseActivity<ActivityLoginBinding, LoginViewModel>(ActivityLoginBinding::inflate) {

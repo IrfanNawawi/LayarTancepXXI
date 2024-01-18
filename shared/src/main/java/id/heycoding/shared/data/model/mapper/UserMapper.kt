@@ -10,7 +10,7 @@ import id.heycoding.shared.utils.mapper.ViewParamMapper
  * heycoding.tech
  * heycoding@gmail.com
  */
-object UserMapper: ViewParamMapper<UserResponse, UserViewParam> {
+object UserMapper : ViewParamMapper<UserResponse, UserViewParam> {
     override fun toViewParam(dataObject: UserResponse?): UserViewParam = UserViewParam(
         email = dataObject?.email.orEmpty(),
         birthdate = dataObject?.birthdate.orEmpty(),

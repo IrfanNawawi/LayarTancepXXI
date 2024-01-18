@@ -6,5 +6,4 @@ package id.heycoding.core.exception
  * heycoding.tech
  * heycoding@gmail.com
  */
-class UnexpectedErrorException: Exception() {
-}
+class UnexpectedErrorException : Exception()

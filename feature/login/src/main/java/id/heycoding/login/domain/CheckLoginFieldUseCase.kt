@@ -22,22 +22,22 @@ typealias CheckFieldLoginResult = List<Pair<Int, Int>>
 class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) :
     BaseUseCase<LoginUserUseCase.LoginParam, CheckFieldLoginResult>(dispatcher) {
     override suspend fun execute(loginParam: LoginUserUseCase.LoginParam?): Flow<ViewResource<CheckFieldLoginResult>> {
-      return flow {
-          loginParam?.let { p ->
-              val result = mutableListOf<Pair<Int, Int>>()
-              checkIsEmailValid(p.email)?.let {
-                  result.add(it)
-              }
-              checkIsPasswordValid(p.password)?.let {
-                  result.add(it)
-              }
-              if (result.isEmpty()) {
-                  emit(ViewResource.Success(result))
-              } else {
-                  emit(ViewResource.Error(FieldErrorException(result)))
-              }
-          } ?: throw IllegalStateException("Param Required")
-      }
+        return flow {
+            loginParam?.let { p ->
+                val result = mutableListOf<Pair<Int, Int>>()
+                checkIsEmailValid(p.email)?.let {
+                    result.add(it)
+                }
+                checkIsPasswordValid(p.password)?.let {
+                    result.add(it)
+                }
+                if (result.isEmpty()) {
+                    emit(ViewResource.Success(result))
+                } else {
+                    emit(ViewResource.Error(FieldErrorException(result)))
+                }
+            } ?: throw IllegalStateException("Param Required")
+        }
     }
 
     private fun checkIsPasswordValid(password: String): Pair<Int, Int>? {

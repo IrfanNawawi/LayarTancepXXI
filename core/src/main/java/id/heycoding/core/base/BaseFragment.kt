@@ -18,8 +18,8 @@ import java.lang.Exception
  * heycoding@gmail.com
  */
 abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(
-    val bindingFactory : (LayoutInflater, ViewGroup?, Boolean) -> B
-): Fragment() {
+    val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> B
+) : Fragment() {
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
@@ -41,11 +41,15 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(
 
     abstract fun initView()
 
-    open fun observeData(){}
+    open fun observeData() {}
 
     fun showError(isErrorEnabled: Boolean, exception: Exception) {
         if (isErrorEnabled) {
-            Toast.makeText(requireContext(), requireContext().getErrorMessageByException(exception), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().getErrorMessageByException(exception),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

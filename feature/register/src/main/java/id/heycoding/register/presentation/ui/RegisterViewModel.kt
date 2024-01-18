@@ -1,4 +1,4 @@
-package id.heycoding.register.presentation
+package id.heycoding.register.presentation.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

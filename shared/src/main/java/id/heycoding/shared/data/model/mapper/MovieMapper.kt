@@ -10,7 +10,7 @@ import id.heycoding.shared.utils.mapper.ViewParamMapper
  * heycoding.tech
  * heycoding@gmail.com
  */
-object MovieMapper: ViewParamMapper<MovieResponse, MovieViewParam> {
+object MovieMapper : ViewParamMapper<MovieResponse, MovieViewParam> {
     override fun toViewParam(dataObject: MovieResponse?): MovieViewParam = MovieViewParam(
         cast = dataObject?.cast.orEmpty(),
         category = dataObject?.category.orEmpty(),
