@@ -20,7 +20,7 @@ import kotlinx.coroutines.SupervisorJob
  * heycoding@gmail.com
  */
 class UserPreferenceFactory(private val appContext: Context) {
-    fun create() : DataStore<Preferences> {
+    fun create(): DataStore<Preferences> {
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(
                 produceNewData = { emptyPreferences() }),

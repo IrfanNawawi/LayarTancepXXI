@@ -20,7 +20,10 @@ object CommonUtils {
     fun shareFilm(context: Context, movieViewParam: MovieViewParam) {
         val shareIntent = Intent.createChooser(Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "Watch this ! ${movieViewParam.title} ${movieViewParam.posterUrl}")
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "Watch this ! ${movieViewParam.title} ${movieViewParam.posterUrl}"
+            )
             type = "text/plain"
         }, null)
         context.startActivity(shareIntent)

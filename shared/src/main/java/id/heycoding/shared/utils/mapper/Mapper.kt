@@ -6,7 +6,7 @@ package id.heycoding.shared.utils.mapper
  * heycoding.tech
  * heycoding@gmail.com
  */
-interface Mapper<DTO,ViewParam>
+interface Mapper<DTO, ViewParam>
 
 interface ViewParamMapper<DTO, ViewParam> : Mapper<DTO, ViewParam> {
     fun toViewParam(dataObject: DTO?): ViewParam

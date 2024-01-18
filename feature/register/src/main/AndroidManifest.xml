@@ -3,9 +3,9 @@
 
     <application>
         <activity
-            android:name=".presentation.RegisterActivity"
+            android:name=".presentation.ui.RegisterActivity"
             android:exported="false"
-            android:theme="@style/LayarTancepXXI.NoActionBar"/>
+            android:theme="@style/LayarTancepXXI.NoActionBar" />
     </application>
 
 </manifest>

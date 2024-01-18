@@ -1,6 +1,7 @@
 package id.heycoding.layartancepxxi
 
 import android.app.Application
+import id.heycoding.home.di.HomeModules
 import id.heycoding.layartancepxxi.di.AppModules
 import id.heycoding.login.di.LoginModules
 import id.heycoding.register.di.RegisterModules
@@ -27,7 +28,8 @@ class App : Application() {
                         SharedModules.getModules() +
                         SplashScreenModules.getModules() +
                         LoginModules.getModules() +
-                        RegisterModules.getModules()
+                        RegisterModules.getModules() +
+                        HomeModules.getModules()
             )
         }
     }

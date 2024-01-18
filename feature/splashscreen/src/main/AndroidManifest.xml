@@ -4,11 +4,11 @@
     <application>
         <activity
             android:theme="@style/LayarTancepXXI.NoActionBar"
-            android:name=".presentation.SplashScreenActivity"
-            android:exported="true" >
+            android:name=".presentation.ui.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

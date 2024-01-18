@@ -17,7 +17,7 @@ interface RegisterDataSource {
     suspend fun registerUser(registerRequest: RegisterRequest): BaseResponse<AuthResponse>
 }
 
-class RegisterDataSourceImpl(private val service: RegisterFeatureApi): RegisterDataSource {
+class RegisterDataSourceImpl(private val service: RegisterFeatureApi) : RegisterDataSource {
     override suspend fun registerUser(registerRequest: RegisterRequest): BaseResponse<AuthResponse> {
         return service.registerUser(registerRequest)
     }

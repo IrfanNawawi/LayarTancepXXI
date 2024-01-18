@@ -5,7 +5,9 @@
     <string name="message_error_unknown">Something is wrong when fetch data\nPlease try again</string>
     <string name="play">Play</string>
     <string name="my_list">My list</string>
+    <string name="info">Info</string>
     <string name="share">Share</string>
+    <string name="text_empty_watchlist">There\'s no movie in here \n Go add some movies to your watchlist</string>
     <string name="details_amp_more"><![CDATA[Details & More]]></string>
 
     <string-array name="gender_list">

@@ -6,4 +6,5 @@ package id.heycoding.core.exception
  * heycoding.tech
  * heycoding@gmail.com
  */
-class ApiErrorException(override val message: String? = null, val httpCode: Int? = null) : Exception()
+class ApiErrorException(override val message: String? = null, val httpCode: Int? = null) :
+    Exception()

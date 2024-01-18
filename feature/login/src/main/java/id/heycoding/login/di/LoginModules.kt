@@ -8,7 +8,7 @@ import id.heycoding.login.data.repository.LoginRepository
 import id.heycoding.login.data.repository.LoginRepositoryImpl
 import id.heycoding.login.domain.CheckLoginFieldUseCase
 import id.heycoding.login.domain.LoginUserUseCase
-import id.heycoding.login.presentation.LoginViewModel
+import id.heycoding.login.presentation.ui.LoginViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -23,7 +23,8 @@ import org.koin.dsl.module
  */
 object LoginModules : FeatureModules {
 
-    override fun getModules(): List<Module> = listOf(repositories, viewModels, dataSources, useCases, network)
+    override fun getModules(): List<Module> =
+        listOf(repositories, viewModels, dataSources, useCases, network)
 
     override val repositories: Module = module {
         single<LoginRepository> { LoginRepositoryImpl(get()) }

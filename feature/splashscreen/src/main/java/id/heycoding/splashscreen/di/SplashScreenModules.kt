@@ -8,7 +8,7 @@ import id.heycoding.splashscreen.data.network.service.SplashScreenFeatureApi
 import id.heycoding.splashscreen.data.repository.SplashScreenRepository
 import id.heycoding.splashscreen.data.repository.SplashScreenRepositoryImpl
 import id.heycoding.splashscreen.domain.SyncUserUseCase
-import id.heycoding.splashscreen.presentation.SplashScreenViewModel
+import id.heycoding.splashscreen.presentation.ui.SplashScreenViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
@@ -24,6 +24,7 @@ object SplashScreenModules : FeatureModules {
     override fun getModules(): List<Module> = listOf(
         repositories, viewModels, dataSources, useCases, network
     )
+
     override val repositories: Module = module {
         single<SplashScreenRepository> { SplashScreenRepositoryImpl(get()) }
     }

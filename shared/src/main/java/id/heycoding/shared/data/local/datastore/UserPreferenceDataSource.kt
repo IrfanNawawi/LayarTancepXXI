@@ -16,11 +16,11 @@ import kotlinx.coroutines.flow.map
  */
 interface UserPreferenceDataSource {
     suspend fun clearData()
-    suspend fun getUserToken() : Flow<String>
+    suspend fun getUserToken(): Flow<String>
     suspend fun setUserToken(newUserToken: String)
-    suspend fun isUserLoggedIn() : Flow<Boolean>
+    suspend fun isUserLoggedIn(): Flow<Boolean>
     suspend fun setUserLoginStatus(isUserLoggedIn: Boolean)
-    suspend fun getCurrentUser() : Flow<UserResponse>
+    suspend fun getCurrentUser(): Flow<UserResponse>
     suspend fun setCurrentUser(user: UserResponse)
 }
 
@@ -41,9 +41,9 @@ class UserPreferenceDataSourceImpl(
     }
 
     override suspend fun setUserToken(newUserToken: String) {
-       dataStore.edit {
-           it[UserPreferenceKey.userToken] = newUserToken
-       }
+        dataStore.edit {
+            it[UserPreferenceKey.userToken] = newUserToken
+        }
     }
 
     override suspend fun isUserLoggedIn(): Flow<Boolean> {
@@ -60,7 +60,10 @@ class UserPreferenceDataSourceImpl(
 
     override suspend fun getCurrentUser(): Flow<UserResponse> {
         return dataStore.data.map {
-            gson.fromJson(it.toPreferences()[UserPreferenceKey.userObject].orEmpty(), UserResponse::class.java)
+            gson.fromJson(
+                it.toPreferences()[UserPreferenceKey.userObject].orEmpty(),
+                UserResponse::class.java
+            )
         }
     }
 

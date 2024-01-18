@@ -2,9 +2,9 @@ package id.heycoding.layartancepxxi.router
 
 import android.content.Context
 import android.content.Intent
-import id.heycoding.home.presentation.ui.HomeActivity
-import id.heycoding.login.presentation.LoginActivity
-import id.heycoding.register.presentation.RegisterActivity
+import id.heycoding.home.presentation.ui.home.HomeActivity
+import id.heycoding.login.presentation.ui.LoginActivity
+import id.heycoding.register.presentation.ui.RegisterActivity
 import id.heycoding.shared.router.ActivityRouter
 
 
@@ -13,7 +13,7 @@ import id.heycoding.shared.router.ActivityRouter
  * heycoding.tech
  * heycoding@gmail.com
  */
-class ActivityRouterImpl: ActivityRouter {
+class ActivityRouterImpl : ActivityRouter {
     override fun loginActivity(context: Context): Intent {
         return Intent(context, LoginActivity::class.java)
     }
