@@ -10,6 +10,7 @@ import id.heycoding.login.R
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_EMAIL
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_PASSWORD
 import id.heycoding.shared.utils.StringUtils
+import id.heycoding.styling.ProjectString
 
 
 /**
@@ -42,7 +43,7 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsPasswordValid(password: String): Pair<Int, Int>? {
         return if (password.isEmpty()) {
-            Pair(FIELD_PASSWORD, R.string.error_field_password)
+            Pair(FIELD_PASSWORD, ProjectString.error_field_password)
         } else {
             null
         }
@@ -50,9 +51,9 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsEmailValid(email: String): Pair<Int, Int>? {
         return if (email.isEmpty()) {
-            Pair(FIELD_EMAIL, R.string.error_field_email)
+            Pair(FIELD_EMAIL, ProjectString.error_field_email)
         } else if (!StringUtils.isEmailValid(email)) {
-            Pair(FIELD_EMAIL, R.string.error_field_email_not_valid)
+            Pair(FIELD_EMAIL, ProjectString.error_field_email_not_valid)
         } else {
             null
         }

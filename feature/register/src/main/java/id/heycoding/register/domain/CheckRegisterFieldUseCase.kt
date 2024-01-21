@@ -10,6 +10,7 @@ import id.heycoding.register.utils.RegisterFieldConstants.FIELD_GENDER
 import id.heycoding.register.utils.RegisterFieldConstants.FIELD_PASSWORD
 import id.heycoding.register.utils.RegisterFieldConstants.FIELD_USERNAME
 import id.heycoding.shared.utils.StringUtils
+import id.heycoding.styling.ProjectString
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -54,7 +55,7 @@ class CheckRegisterFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsBirthdateValid(birthdate: String): Pair<Int, Int>? {
         return if (birthdate.isEmpty()) {
-            Pair(FIELD_BIRTHDATE, R.string.error_field_empty)
+            Pair(FIELD_BIRTHDATE, ProjectString.error_field_empty)
         } else {
             null
         }
@@ -62,9 +63,9 @@ class CheckRegisterFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsEmailValid(email: String): Pair<Int, Int>? {
         return if (email.isEmpty()) {
-            Pair(FIELD_EMAIL, R.string.error_field_empty)
+            Pair(FIELD_EMAIL, ProjectString.error_field_empty)
         } else if (!StringUtils.isEmailValid(email)) {
-            Pair(FIELD_EMAIL, R.string.error_field_email_not_valid)
+            Pair(FIELD_EMAIL, ProjectString.error_field_email_not_valid)
         } else {
             null
         }
@@ -72,7 +73,7 @@ class CheckRegisterFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsGenderValid(gender: String): Pair<Int, Int>? {
         return if (gender.isEmpty()) {
-            Pair(FIELD_GENDER, R.string.error_field_empty)
+            Pair(FIELD_GENDER, ProjectString.error_field_empty)
         } else {
             null
         }
@@ -80,11 +81,11 @@ class CheckRegisterFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsPasswordValid(password: String): Pair<Int, Int>? {
         return if (password.isEmpty()) {
-            Pair(FIELD_PASSWORD, R.string.error_field_empty)
+            Pair(FIELD_PASSWORD, ProjectString.error_field_empty)
         } else if (password.length < 8) {
             Pair(
                 FIELD_PASSWORD,
-                R.string.error_field_username_length_below_min
+                ProjectString.error_field_username_length_below_min
             )
         } else {
             null
@@ -93,16 +94,16 @@ class CheckRegisterFieldUseCase(dispatcher: CoroutineDispatcher) :
 
     private fun checkIsUsernameValid(username: String): Pair<Int, Int>? {
         return if (username.isEmpty()) {
-            Pair(FIELD_USERNAME, R.string.error_field_empty)
+            Pair(FIELD_USERNAME, ProjectString.error_field_empty)
         } else if (username.length < 8) {
             Pair(
                 FIELD_USERNAME,
-                R.string.error_field_username_length_below_min
+                ProjectString.error_field_username_length_below_min
             )
         } else if (username.contains(" ")) {
             Pair(
                 FIELD_USERNAME,
-                R.string.error_field_username_not_allowed_character
+                ProjectString.error_field_username_not_allowed_character
             )
         } else {
             null

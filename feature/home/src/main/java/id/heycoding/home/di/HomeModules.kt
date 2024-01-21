@@ -8,8 +8,11 @@ import id.heycoding.home.data.repository.HomeRepository
 import id.heycoding.home.data.repository.HomeRepositoryImpl
 import id.heycoding.home.domain.GetHomeFeedsUseCase
 import id.heycoding.home.domain.GetWatchlistUseCase
+import id.heycoding.home.presentation.ui.home.HomeViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -27,8 +30,9 @@ object HomeModules : FeatureModules {
     override val repositories: Module = module {
         single<HomeRepository> { HomeRepositoryImpl(get()) }
     }
-    override val viewModels: Module
-        get() = TODO("Not yet implemented")
+    override val viewModels: Module = module {
+        viewModelOf(::HomeViewModel)
+    }
     override val dataSources: Module = module {
         single<HomeDataSource> { HomeDataSourceImpl(get()) }
     }
