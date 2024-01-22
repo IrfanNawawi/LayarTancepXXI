@@ -1,5 +1,6 @@
 package id.heycoding.home.presentation.ui.homefeeds
 
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import id.heycoding.shared.utils.ext.subscribe
 import id.heycoding.shared.utils.textdrawable.ColorGenerator
 import id.heycoding.shared.utils.textdrawable.TextDrawable
 import id.heycoding.styling.ProjectColor
+import id.heycoding.styling.ProjectString
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -29,7 +31,7 @@ class HomeFeedsFragment :
     private val homeFeedsAdapter: HomeFeedsAdapter by lazy {
         HomeFeedsAdapter(object : HomeAdapterClickListener {
             override fun onMyListClicked(movieViewParam: MovieViewParam) {
-                // TODO : Add to Watchlist
+                viewModel.addOrRemoveWatchlist(movieViewParam)
             }
 
             override fun onPlayMovieClicked(movieViewParam: MovieViewParam) {
@@ -89,6 +91,12 @@ class HomeFeedsFragment :
                         ColorGenerator.MATERIAL.randomColor
                     )
                 )
+            })
+        }
+        viewModel.getWatchlistResult().observe(viewLifecycleOwner) {
+            it.subscribe(doOnSuccess = {Toast.makeText(requireContext(), if (it.payload?.isUserWatchlist == true) getString(ProjectString.text_add_watchlist_success) else getString(ProjectString.text_remove_watchlist_success), Toast.LENGTH_SHORT).show()
+            }, doOnError = {
+
             })
         }
     }

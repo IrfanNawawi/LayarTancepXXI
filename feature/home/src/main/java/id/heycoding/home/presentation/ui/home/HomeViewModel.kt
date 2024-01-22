@@ -9,6 +9,8 @@ import id.heycoding.home.domain.GetWatchlistUseCase
 import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.data.model.viewparam.UserViewParam
+import id.heycoding.shared.delegates.AddOrRemoveWatchlistDelegates
+import id.heycoding.shared.delegates.AddOrRemoveWatchlistDelegatesImpl
 import id.heycoding.shared.domain.GetCurrentUserUseCase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,10 +25,15 @@ class HomeViewModel(
     private val getHomeFeedsUseCase: GetHomeFeedsUseCase,
     private val getWatchlistUseCase: GetWatchlistUseCase,
     private val getCurrentUserUseCase: GetCurrentUserUseCase
-) : ViewModel() {
+) : ViewModel(), AddOrRemoveWatchlistDelegates by AddOrRemoveWatchlistDelegatesImpl() {
     val homeFeedsResult: MutableLiveData<ViewResource<List<HomeUiItem>>> = MutableLiveData()
     val watchlistResult: MutableLiveData<ViewResource<List<MovieViewParam>>> = MutableLiveData()
     val currentUserResult: MutableLiveData<ViewResource<UserViewParam>> = MutableLiveData()
+
+    init {
+        init(viewModelScope)
+    }
+
     fun fetchHomeFeeds() {
         viewModelScope.launch {
             getHomeFeedsUseCase().collect {
