@@ -11,3 +11,4 @@ typealias ProjectDrawable = R.drawable
 typealias ProjectColor = R.color
 typealias ProjectArray = R.array
 typealias ProjectLayout = R.layout
+typealias ProjectMenu = R.menu

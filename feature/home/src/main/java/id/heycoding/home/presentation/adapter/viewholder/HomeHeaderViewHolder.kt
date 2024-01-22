@@ -3,6 +3,7 @@ package id.heycoding.home.presentation.adapter.viewholder
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import id.heycoding.home.databinding.ItemHeaderHomeBinding
+import id.heycoding.home.presentation.adapter.HomeAdapterClickListener
 import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.utils.CommonUtils
@@ -15,7 +16,7 @@ import id.heycoding.shared.utils.CommonUtils
  */
 class HomeHeaderViewHolder(
     private val binding: ItemHeaderHomeBinding,
-    private val listener: HomeHeaderClickListener
+    private val listener: HomeAdapterClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bindView(item: HomeUiItem.HeaderSectionItem) {
         with(item.movieViewParam) {
@@ -28,7 +29,7 @@ class HomeHeaderViewHolder(
             binding.ivHeaderMovie.load(this.posterUrl)
             binding.tvTitleMovie.text = this.title
             binding.tvInfoHeader.setOnClickListener {
-                listener.onInfoClicked(this)
+                listener.onMovieClicked(this)
             }
             binding.tvAddToWatchlistHeader.setOnClickListener {
                 listener.onMyListClicked(this)
@@ -38,10 +39,4 @@ class HomeHeaderViewHolder(
             }
         }
     }
-}
-
-interface HomeHeaderClickListener {
-    fun onMyListClicked(movieViewParam: MovieViewParam)
-    fun onPlayMovieClicked(movieViewParam: MovieViewParam)
-    fun onInfoClicked(movieViewParam: MovieViewParam)
 }

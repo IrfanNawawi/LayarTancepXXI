@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import id.heycoding.home.R
 import id.heycoding.home.databinding.ItemHeaderHomeBinding
 import id.heycoding.home.databinding.ItemSectionMovieBinding
-import id.heycoding.home.presentation.adapter.viewholder.HomeHeaderClickListener
 import id.heycoding.home.presentation.adapter.viewholder.HomeHeaderViewHolder
 import id.heycoding.home.presentation.adapter.viewholder.HomeSectionViewHolder
 import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
@@ -20,8 +19,7 @@ import id.heycoding.shared.data.model.viewparam.MovieViewParam
  * heycoding@gmail.com
  */
 class HomeFeedsAdapter(
-    private val headerClickListener: HomeHeaderClickListener,
-    private val onMovieClicked: (MovieViewParam) -> Unit,
+    private val listener: HomeAdapterClickListener,
     private val recycledViewPool: RecycledViewPool
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val items = mutableListOf<HomeUiItem>()
@@ -39,7 +37,7 @@ class HomeFeedsAdapter(
                     parent,
                     false
                 )
-                HomeHeaderViewHolder(binding, headerClickListener)
+                HomeHeaderViewHolder(binding, listener)
             }
 
             else -> {
@@ -48,7 +46,7 @@ class HomeFeedsAdapter(
                     parent,
                     false
                 )
-                HomeSectionViewHolder(binding, recycledViewPool, onMovieClicked)
+                HomeSectionViewHolder(binding, recycledViewPool, listener)
             }
         }
     }
@@ -73,4 +71,10 @@ class HomeFeedsAdapter(
         }
     }
 
+}
+
+interface HomeAdapterClickListener {
+    fun onMyListClicked(movieViewParam: MovieViewParam)
+    fun onPlayMovieClicked(movieViewParam: MovieViewParam)
+    fun onMovieClicked(movieViewParam: MovieViewParam)
 }
