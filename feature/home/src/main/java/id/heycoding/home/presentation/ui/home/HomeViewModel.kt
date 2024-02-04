@@ -12,7 +12,6 @@ import id.heycoding.shared.data.model.viewparam.UserViewParam
 import id.heycoding.shared.delegates.AddOrRemoveWatchlistDelegates
 import id.heycoding.shared.delegates.AddOrRemoveWatchlistDelegatesImpl
 import id.heycoding.shared.domain.GetCurrentUserUseCase
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 

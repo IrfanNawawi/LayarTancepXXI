@@ -1,1 +1,0 @@
-/Users/itdag/AndroidStudioProjects/LayarTancepXXI/buildSrc/build/classes/kotlin/main/AndroidProjectConfig.class:/Users/itdag/AndroidStudioProjects/LayarTancepXXI/buildSrc/build/classes/kotlin/main/Libraries$Versions.class:/Users/itdag/AndroidStudioProjects/LayarTancepXXI/buildSrc/build/classes/kotlin/main/Libraries.class

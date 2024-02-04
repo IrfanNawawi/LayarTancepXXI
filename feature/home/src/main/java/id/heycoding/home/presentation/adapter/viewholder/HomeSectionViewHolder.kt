@@ -5,10 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import id.heycoding.home.databinding.ItemSectionMovieBinding
 import id.heycoding.home.presentation.adapter.HomeAdapterClickListener
-import id.heycoding.home.presentation.adapter.HomeFeedsAdapter
 import id.heycoding.home.presentation.adapter.MovieAdapter
 import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
 
 
 /**

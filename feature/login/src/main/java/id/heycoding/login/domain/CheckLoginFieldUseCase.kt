@@ -3,14 +3,13 @@ package id.heycoding.login.domain
 import id.heycoding.core.base.BaseUseCase
 import id.heycoding.core.exception.FieldErrorException
 import id.heycoding.core.wrapper.ViewResource
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import id.heycoding.login.R
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_EMAIL
 import id.heycoding.login.utils.LoginFieldConstants.FIELD_PASSWORD
 import id.heycoding.shared.utils.StringUtils
-import id.heycoding.styling.ProjectString
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 
 /**

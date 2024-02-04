@@ -2,7 +2,6 @@ package id.heycoding.shared.utils
 
 import android.text.TextUtils
 import android.util.Patterns
-import java.util.regex.Pattern
 
 
 /**

@@ -10,7 +10,6 @@ import id.heycoding.shared.utils.GenderUtils
 import id.heycoding.shared.utils.ext.suspendSubscribe
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 

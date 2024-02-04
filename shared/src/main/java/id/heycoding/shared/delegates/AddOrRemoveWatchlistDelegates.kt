@@ -6,7 +6,6 @@ import id.heycoding.core.wrapper.ViewResource
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.domain.AddOrRemoveWatchlistUseCase
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 

@@ -1,6 +1,5 @@
 package id.heycoding.register.data.repository
 
-import com.google.gson.annotations.SerializedName
 import id.heycoding.core.wrapper.DataResource
 import id.heycoding.register.data.network.datasource.RegisterDataSource
 import id.heycoding.register.data.network.model.request.RegisterRequest

@@ -7,9 +7,7 @@ import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.data.repository.SharedApiRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 
 
