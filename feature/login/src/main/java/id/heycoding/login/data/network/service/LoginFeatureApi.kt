@@ -4,7 +4,6 @@ import id.heycoding.login.data.network.model.request.LoginRequest
 import id.heycoding.shared.data.model.response.AuthResponse
 import id.heycoding.shared.data.model.response.BaseResponse
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 

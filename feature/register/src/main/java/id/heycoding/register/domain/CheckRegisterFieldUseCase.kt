@@ -10,7 +10,6 @@ import id.heycoding.register.utils.RegisterFieldConstants.FIELD_GENDER
 import id.heycoding.register.utils.RegisterFieldConstants.FIELD_PASSWORD
 import id.heycoding.register.utils.RegisterFieldConstants.FIELD_USERNAME
 import id.heycoding.shared.utils.StringUtils
-import id.heycoding.styling.ProjectString
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

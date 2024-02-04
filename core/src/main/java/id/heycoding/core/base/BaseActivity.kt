@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import id.heycoding.core.utils.getErrorMessageByException
-import java.lang.Exception
 
 
 /**

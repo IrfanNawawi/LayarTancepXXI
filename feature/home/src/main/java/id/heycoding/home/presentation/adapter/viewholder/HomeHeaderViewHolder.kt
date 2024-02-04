@@ -5,7 +5,6 @@ import coil.load
 import id.heycoding.home.databinding.ItemHeaderHomeBinding
 import id.heycoding.home.presentation.adapter.HomeAdapterClickListener
 import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.utils.CommonUtils
 
 

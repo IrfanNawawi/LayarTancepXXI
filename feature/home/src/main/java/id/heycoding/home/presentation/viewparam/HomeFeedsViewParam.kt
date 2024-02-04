@@ -1,7 +1,6 @@
 package id.heycoding.home.presentation.viewparam
 
 import com.google.gson.annotations.SerializedName
-import id.heycoding.shared.data.model.response.MovieResponse
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 
 

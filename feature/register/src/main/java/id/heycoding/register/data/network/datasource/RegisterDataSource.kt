@@ -4,8 +4,6 @@ import id.heycoding.register.data.network.model.request.RegisterRequest
 import id.heycoding.register.data.network.service.RegisterFeatureApi
 import id.heycoding.shared.data.model.response.AuthResponse
 import id.heycoding.shared.data.model.response.BaseResponse
-import retrofit2.http.Body
-import retrofit2.http.POST
 
 
 /**

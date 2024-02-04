@@ -94,7 +94,15 @@ class HomeFeedsFragment :
             })
         }
         viewModel.getWatchlistResult().observe(viewLifecycleOwner) {
-            it.subscribe(doOnSuccess = {Toast.makeText(requireContext(), if (it.payload?.isUserWatchlist == true) getString(ProjectString.text_add_watchlist_success) else getString(ProjectString.text_remove_watchlist_success), Toast.LENGTH_SHORT).show()
+            it.subscribe(doOnSuccess = {
+                Toast.makeText(
+                    requireContext(),
+                    if (it.payload?.isUserWatchlist == true)
+                        getString(ProjectString.text_add_watchlist_success)
+                    else
+                        getString(ProjectString.text_remove_watchlist_success),
+                    Toast.LENGTH_SHORT
+                ).show()
             }, doOnError = {
 
             })

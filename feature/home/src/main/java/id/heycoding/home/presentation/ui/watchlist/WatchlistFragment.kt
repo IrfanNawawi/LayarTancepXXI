@@ -1,15 +1,8 @@
 package id.heycoding.home.presentation.ui.watchlist
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import id.heycoding.core.base.BaseFragment
-import id.heycoding.home.R
 import id.heycoding.home.databinding.FragmentWatchlistBinding
 import id.heycoding.home.presentation.adapter.MovieAdapter
 import id.heycoding.home.presentation.ui.home.HomeViewModel
@@ -17,7 +10,8 @@ import id.heycoding.shared.utils.ext.subscribe
 import id.heycoding.styling.ProjectString
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class WatchlistFragment : BaseFragment<FragmentWatchlistBinding, HomeViewModel>(FragmentWatchlistBinding::inflate) {
+class WatchlistFragment :
+    BaseFragment<FragmentWatchlistBinding, HomeViewModel>(FragmentWatchlistBinding::inflate) {
     override val viewModel: HomeViewModel by sharedViewModel()
     private lateinit var movieAdapter: MovieAdapter
 

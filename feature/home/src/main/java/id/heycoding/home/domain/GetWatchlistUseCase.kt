@@ -3,7 +3,6 @@ package id.heycoding.home.domain
 import id.heycoding.core.base.BaseUseCase
 import id.heycoding.core.wrapper.ViewResource
 import id.heycoding.home.data.repository.HomeRepository
-import id.heycoding.home.presentation.viewparam.homeitem.HomeUiItem
 import id.heycoding.shared.data.model.mapper.MovieMapper
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.utils.ext.suspendSubscribe

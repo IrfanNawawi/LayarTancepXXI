@@ -11,7 +11,6 @@ import id.heycoding.home.domain.GetWatchlistUseCase
 import id.heycoding.home.presentation.ui.home.HomeViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
