@@ -22,7 +22,7 @@ object CommonUtils {
             action = Intent.ACTION_SEND
             putExtra(
                 Intent.EXTRA_TEXT,
-                "Watch this ! ${movieViewParam.title} ${movieViewParam.posterUrl}"
+                "Watch this ! ${movieViewParam.title} ${movieViewParam.posterPath}"
             )
             type = "text/plain"
         }, null)

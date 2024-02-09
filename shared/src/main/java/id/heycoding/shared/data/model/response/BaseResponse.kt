@@ -9,12 +9,8 @@ import com.google.gson.annotations.SerializedName
  * heycoding@gmail.com
  */
 data class BaseResponse<D>(
-    @SerializedName("code")
-    val code: Int?,
-    @SerializedName("success")
-    val success: String?,
-    @SerializedName("message")
-    val message: String?,
-    @SerializedName("data")
+    @SerializedName("results")
     val data: D?,
+    @SerializedName("total_results")
+    val totalResults: Int?
 )

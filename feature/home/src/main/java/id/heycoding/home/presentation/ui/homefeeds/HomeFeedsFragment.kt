@@ -4,20 +4,23 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
+import androidx.recyclerview.widget.SnapHelper
 import id.heycoding.core.base.BaseFragment
+import id.heycoding.home.R
 import id.heycoding.home.databinding.FragmentHomeFeedsBinding
-import id.heycoding.home.presentation.adapter.HomeAdapterClickListener
-import id.heycoding.home.presentation.adapter.HomeFeedsAdapter
+import id.heycoding.home.presentation.adapter.BannerAdapter
+import id.heycoding.home.presentation.adapter.PopularAdapter
+import id.heycoding.home.presentation.adapter.PopularAdapterClickListener
+import id.heycoding.home.presentation.adapter.UpcomingAdapter
+import id.heycoding.home.presentation.adapter.UpcomingAdapterClickListener
 import id.heycoding.home.presentation.ui.home.HomeViewModel
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
 import id.heycoding.shared.utils.ColorUtils
 import id.heycoding.shared.utils.ext.subscribe
-import id.heycoding.shared.utils.textdrawable.ColorGenerator
-import id.heycoding.shared.utils.textdrawable.TextDrawable
 import id.heycoding.styling.ProjectColor
-import id.heycoding.styling.ProjectString
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -25,42 +28,31 @@ import kotlin.math.min
 class HomeFeedsFragment :
     BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(FragmentHomeFeedsBinding::inflate) {
     override val viewModel: HomeViewModel by sharedViewModel()
+    private val snapHelper: SnapHelper = LinearSnapHelper()
     private val recyclerViewPool: RecycledViewPool by lazy {
         RecycledViewPool()
     }
-    private val homeFeedsAdapter: HomeFeedsAdapter by lazy {
-        HomeFeedsAdapter(object : HomeAdapterClickListener {
-            override fun onMyListClicked(movieViewParam: MovieViewParam) {
-                viewModel.addOrRemoveWatchlist(movieViewParam)
-            }
 
-            override fun onPlayMovieClicked(movieViewParam: MovieViewParam) {
-                // TODO : Handle click item
-            }
-
-            override fun onMovieClicked(movieViewParam: MovieViewParam) {
-                // TODO : On Movie Clicked
-            }
-        }, recyclerViewPool)
+    private val bannerAdapter: BannerAdapter by lazy {
+        BannerAdapter()
     }
 
-    private fun setupRecyclerView() {
-        binding.rvHome.apply {
-            adapter = homeFeedsAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            setRecycledViewPool(recyclerViewPool)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    val scrollY: Int = binding.rvHome.computeVerticalScrollOffset()
-                    val color = ColorUtils.changeAlpha(
-                        ContextCompat.getColor(requireActivity(), ProjectColor.black_transparent),
-                        (min(255, scrollY).toFloat() / 255.0f).toDouble()
-                    )
-                    binding.clToolbarHomeFeed.setBackgroundColor(color)
-                }
-            })
-        }
+    private val popularAdapter: PopularAdapter by lazy {
+        PopularAdapter(object : PopularAdapterClickListener {
+            override fun onPopularMovieClicked(popularViewParam: MovieViewParam) {
+                Toast.makeText(requireContext(), "This is Popular", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private val upcomingAdapter: UpcomingAdapter by lazy {
+        UpcomingAdapter(object : UpcomingAdapterClickListener {
+            override fun onUpcomingMovieClicked(upcomingViewParam: MovieViewParam) {
+                Toast.makeText(requireContext(), "This is Upcoming", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     override fun initView() {
@@ -68,50 +60,104 @@ class HomeFeedsFragment :
         initData()
     }
 
+    private fun setupRecyclerView() {
+        binding.layoutSectionHeader.apply {
+            rvMovieBanner.apply {
+                adapter = bannerAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                setRecycledViewPool(recyclerViewPool)
+                setHasFixedSize(true)
+                snapHelper.attachToRecyclerView(rvMovieBanner)
+                addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
+                        val scrollY: Int = rvMovieBanner.computeVerticalScrollOffset()
+                        val color = ColorUtils.changeAlpha(
+                            ContextCompat.getColor(requireActivity(), ProjectColor.black_transparent),
+                            (min(255, scrollY).toFloat() / 255.0f).toDouble()
+                        )
+                        binding.clToolbarHomeFeed.setBackgroundColor(color)
+                    }
+                })
+            }
+        }
+        binding.layoutSectionMovie.apply {
+            rvMoviePopular.apply {
+                adapter = popularAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                setRecycledViewPool(recyclerViewPool)
+                setHasFixedSize(true)
+                snapHelper.attachToRecyclerView(rvMoviePopular)
+            }
+            rvMovieUpcoming.apply {
+                adapter = upcomingAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                setRecycledViewPool(recyclerViewPool)
+                setHasFixedSize(true)
+                snapHelper.attachToRecyclerView(rvMovieUpcoming)
+            }
+        }
+    }
+
     override fun observeData() {
         super.observeData()
-        viewModel.homeFeedsResult.observe(viewLifecycleOwner) {
-            it.subscribe(doOnSuccess = { result ->
-                showLoading(false)
-                result.payload?.let { data ->
-                    homeFeedsAdapter.setItems(data)
-                }
-            }, doOnLoading = {
-                showLoading(true)
-            }, doOnError = { error ->
-                showLoading(false)
-                error.exception?.let { e -> showError(true, e) }
-            })
-        }
-        viewModel.currentUserResult.observe(viewLifecycleOwner) {
-            it.subscribe(doOnSuccess = { result ->
-                binding.ivAvatarUser.setImageDrawable(
-                    TextDrawable.builder().beginConfig().bold().toUpperCase().endConfig().buildRect(
-                        result.payload?.username?.get(0).toString(),
-                        ColorGenerator.MATERIAL.randomColor
-                    )
-                )
-            })
-        }
-        viewModel.getWatchlistResult().observe(viewLifecycleOwner) {
-            it.subscribe(doOnSuccess = {
-                Toast.makeText(
-                    requireContext(),
-                    if (it.payload?.isUserWatchlist == true)
-                        getString(ProjectString.text_add_watchlist_success)
-                    else
-                        getString(ProjectString.text_remove_watchlist_success),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }, doOnError = {
 
-            })
+        viewModel.homePopularResult.observe(viewLifecycleOwner) {
+            it.subscribe(
+                doOnSuccess = { result ->
+                    showLoading(false)
+                    result.payload?.let { data ->
+                        showTitleMovie(true)
+                        bannerAdapter.setItems(data.shuffled())
+                        popularAdapter.setItems(data)
+                    }
+                },
+                doOnLoading = {
+                    showLoading(true)
+                    showTitleMovie(false)
+                },
+                doOnError = { error ->
+                    showLoading(false)
+                    showTitleMovie(false)
+                    error.exception?.let { e -> showError(true, e) }
+                }
+            )
+        }
+        viewModel.homeUpcomingResult.observe(viewLifecycleOwner) {
+            it.subscribe(
+                doOnSuccess = { result ->
+                    showLoading(false)
+                    result.payload?.let { data ->
+                        showTitleMovie(true)
+                        upcomingAdapter.setItems(data.reversed())
+                    }
+                },
+                doOnLoading = {
+                    showLoading(true)
+                    showTitleMovie(false)
+                },
+                doOnError = { error ->
+                    showLoading(false)
+                    showTitleMovie(false)
+                    error.exception?.let { e -> showError(true, e) }
+                }
+            )
         }
     }
 
     private fun initData() {
-        viewModel.getCurrentUser()
-        viewModel.fetchHomeFeeds()
+        viewModel.fetchHomePopular()
+        viewModel.fetchHomeUpcoming()
+    }
+
+    private fun showTitleMovie(isShowLoading: Boolean) {
+        binding.layoutSectionMovie.apply {
+            tvMoviePopular.isVisible = isShowLoading
+            tvMovieUpcoming.isVisible = isShowLoading
+        }
     }
 
     private fun showLoading(isShowLoading: Boolean) {

@@ -7,17 +7,16 @@ package id.heycoding.shared.data.model.viewparam
  * heycoding@gmail.com
  */
 data class MovieViewParam(
-    val cast: List<String>,
-    val category: List<String>,
-    val director: String,
-    val filmRate: String,
+    val backdropPath: String,
     val id: Int,
-    var isUserWatchlist: Boolean,
+    val originalLanguage: String,
+    val originalTitle: String,
     val overview: String,
-    val posterUrl: String,
+    val popularity: Double,
+    val posterPath: String,
     val releaseDate: String,
-    val runtime: Int,
     val title: String,
-    val trailerUrl: String,
-    val videoUrl: String
+    val video: Boolean,
+    val voteAverage: Double,
+    val voteCount: Int
 )

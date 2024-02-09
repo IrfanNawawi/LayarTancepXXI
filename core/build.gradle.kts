@@ -41,7 +41,9 @@ android {
     productFlavors {
         create("production") {
             dimension = "default"
-            buildConfigField("String", "BASE_URL", "\"http://75.101.213.57/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "BASE_URL_IMAGE", "\"https://image.tmdb.org/t/p/\"")
+            buildConfigField("String", "AUTH_TOKEN", "\"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2ZiZDY4NDc2MDNhMzk3M2M1MTdlNTc2MDdjMjRjYiIsInN1YiI6IjVhZjQwMTllOTI1MTQxNzkwZjAwNWYyYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KIG2BAaY8F_N7Ha-bqU5kg7AKDX6qf6pjBuYMEd6104\"")
             buildConfigField("String", "APPLICATION_ID", "\"$AndroidProjectConfig.applicationId\"")
         }
     }
@@ -78,6 +80,7 @@ dependencies {
     api(Libraries.gson)
 
     //koin
+    api(Libraries.koinCore)
     api(Libraries.koinAndroid)
 
     //coil

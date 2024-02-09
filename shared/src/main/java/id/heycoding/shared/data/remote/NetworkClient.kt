@@ -2,7 +2,6 @@ package id.heycoding.shared.data.remote
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import id.heycoding.core.BuildConfig
-import id.heycoding.shared.domain.GetUserTokenUseCase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
@@ -18,20 +17,13 @@ import java.util.concurrent.TimeUnit
  * heycoding@gmail.com
  */
 class NetworkClient(
-    val getUserTokenUseCase: GetUserTokenUseCase,
     val chuckerInterceptor: ChuckerInterceptor
 ) {
     inline fun <reified I> create(): I {
         val authInterceptor = Interceptor {
             val requestBuilder = it.request().newBuilder()
             runBlocking {
-                getUserTokenUseCase().first { tokenResponse ->
-                    val token = tokenResponse.payload
-                    if (!token.isNullOrEmpty()) {
-                        requestBuilder.addHeader("Authorization", "Beare $token")
-                    }
-                    true
-                }
+                requestBuilder.addHeader("Authorization", "Bearer ${BuildConfig.AUTH_TOKEN}")
             }
             it.proceed(requestBuilder.build())
         }

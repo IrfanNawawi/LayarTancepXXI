@@ -6,8 +6,8 @@ import id.heycoding.home.data.network.datasource.HomeDataSourceImpl
 import id.heycoding.home.data.network.service.HomeFeatureApi
 import id.heycoding.home.data.repository.HomeRepository
 import id.heycoding.home.data.repository.HomeRepositoryImpl
-import id.heycoding.home.domain.GetHomeFeedsUseCase
-import id.heycoding.home.domain.GetWatchlistUseCase
+import id.heycoding.home.domain.GetPopularMovieUseCase
+import id.heycoding.home.domain.GetUpcomingMovieUseCase
 import id.heycoding.home.presentation.ui.home.HomeViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
@@ -36,8 +36,8 @@ object HomeModules : FeatureModules {
         single<HomeDataSource> { HomeDataSourceImpl(get()) }
     }
     override val useCases: Module = module {
-        single { GetHomeFeedsUseCase(get(), Dispatchers.IO) }
-        single { GetWatchlistUseCase(get(), Dispatchers.IO) }
+        single { GetPopularMovieUseCase(get(), Dispatchers.IO) }
+        single { GetUpcomingMovieUseCase(get(), Dispatchers.IO) }
     }
     override val network: Module = module {
         single<HomeFeatureApi> { get<NetworkClient>().create() }

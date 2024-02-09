@@ -18,8 +18,7 @@ open class Repository : BaseRepository() {
     override fun <T> getErrorMessageFromApi(response: T): String {
         val responseBody = response as ResponseBody
         return try {
-            val body = gson.fromJson(responseBody.string(), BaseResponse::class.java)
-            body.message ?: "Error Api"
+            "Error Api"
         } catch (e: JsonParseException) {
             "Error Api"
         }
