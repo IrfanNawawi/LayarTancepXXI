@@ -18,9 +18,11 @@ import id.heycoding.home.presentation.adapter.UpcomingAdapter
 import id.heycoding.home.presentation.adapter.UpcomingAdapterClickListener
 import id.heycoding.home.presentation.ui.home.HomeViewModel
 import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.router.BottomSheetRouter
 import id.heycoding.shared.utils.ColorUtils
 import id.heycoding.shared.utils.ext.subscribe
 import id.heycoding.styling.ProjectColor
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -28,6 +30,7 @@ import kotlin.math.min
 class HomeFeedsFragment :
     BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(FragmentHomeFeedsBinding::inflate) {
     override val viewModel: HomeViewModel by sharedViewModel()
+    private val bottomSheetRouter: BottomSheetRouter by inject()
     private val snapHelper: SnapHelper = LinearSnapHelper()
     private val recyclerViewPool: RecycledViewPool by lazy {
         RecycledViewPool()
@@ -40,7 +43,8 @@ class HomeFeedsFragment :
     private val popularAdapter: PopularAdapter by lazy {
         PopularAdapter(object : PopularAdapterClickListener {
             override fun onPopularMovieClicked(popularViewParam: MovieViewParam) {
-                Toast.makeText(requireContext(), "This is Popular", Toast.LENGTH_SHORT).show()
+                bottomSheetRouter.createMovieInfoBottomSheet(popularViewParam)
+                    .show(childFragmentManager, null)
             }
 
         })
@@ -49,7 +53,8 @@ class HomeFeedsFragment :
     private val upcomingAdapter: UpcomingAdapter by lazy {
         UpcomingAdapter(object : UpcomingAdapterClickListener {
             override fun onUpcomingMovieClicked(upcomingViewParam: MovieViewParam) {
-                Toast.makeText(requireContext(), "This is Upcoming", Toast.LENGTH_SHORT).show()
+                bottomSheetRouter.createMovieInfoBottomSheet(upcomingViewParam)
+                    .show(childFragmentManager, null)
             }
 
         })
