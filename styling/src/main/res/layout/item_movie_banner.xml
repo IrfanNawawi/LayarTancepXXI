@@ -112,5 +112,4 @@
             app:drawableTopCompat="@drawable/ic_info"
             tools:drawableTop="@drawable/ic_info" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

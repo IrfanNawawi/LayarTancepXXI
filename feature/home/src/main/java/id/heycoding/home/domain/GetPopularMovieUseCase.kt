@@ -5,6 +5,7 @@ import id.heycoding.core.wrapper.ViewResource
 import id.heycoding.home.data.repository.HomeRepository
 import id.heycoding.home.data.network.model.viewparam.homeitem.HomeUiItem
 import id.heycoding.shared.data.model.mapper.MovieMapper
+import id.heycoding.shared.utils.Const
 import id.heycoding.shared.utils.ext.suspendSubscribe
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -26,7 +27,8 @@ class GetPopularMovieUseCase(private val repository: HomeRepository, dispatcher:
                     val data = mutableListOf<HomeUiItem>()
                     result.payload?.data?.let { homeData ->
                         homeData.forEach { movie->
-                            data.add(HomeUiItem.PopularSectionItem(MovieMapper.toViewParam(movie)))
+                            data.add(HomeUiItem.BannerSectionItem(MovieMapper.toViewParam(movie)))
+                            data.add(HomeUiItem.PopularSectionItem(Const.POPULAR_TITLE, MovieMapper.toViewParam(movie)))
                         }
                     }
                     emit(ViewResource.Success(data))

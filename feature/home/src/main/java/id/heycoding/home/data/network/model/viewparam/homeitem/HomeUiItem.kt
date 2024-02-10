@@ -9,6 +9,8 @@ import id.heycoding.shared.data.model.viewparam.MovieViewParam
  * heycoding@gmail.com
  */
 sealed class HomeUiItem {
-    data class PopularSectionItem(val popularViewParam: MovieViewParam) : HomeUiItem()
-    data class UpcomingSectionItem(val upcomingViewParam: MovieViewParam) : HomeUiItem()
+
+    data class BannerSectionItem(val bannerViewParam: MovieViewParam) : HomeUiItem()
+    data class PopularSectionItem(val title: String, val popularViewParam: MovieViewParam) : HomeUiItem()
+    data class UpcomingSectionItem(val title: String, val upcomingViewParam: MovieViewParam) : HomeUiItem()
 }
