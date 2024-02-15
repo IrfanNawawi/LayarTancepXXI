@@ -1,9 +1,9 @@
 package id.heycoding.home.di
 
 import id.heycoding.core.base.FeatureModules
-import id.heycoding.home.data.network.datasource.HomeDataSource
-import id.heycoding.home.data.network.datasource.HomeDataSourceImpl
-import id.heycoding.home.data.network.service.HomeFeatureApi
+import id.heycoding.home.data.remote.datasource.HomeDataSource
+import id.heycoding.home.data.remote.datasource.HomeDataSourceImpl
+import id.heycoding.home.data.remote.service.HomeFeatureApi
 import id.heycoding.home.data.repository.HomeRepository
 import id.heycoding.home.data.repository.HomeRepositoryImpl
 import id.heycoding.home.domain.GetPopularMovieUseCase

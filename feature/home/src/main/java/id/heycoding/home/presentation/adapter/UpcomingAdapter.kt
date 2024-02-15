@@ -3,11 +3,10 @@ package id.heycoding.home.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
-import id.heycoding.home.presentation.adapter.viewholder.HomeUpcomingViewHolder
-import id.heycoding.home.data.network.model.viewparam.homeitem.HomeUiItem
-import id.heycoding.home.presentation.adapter.viewholder.HomePopularViewHolder
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import coil.load
+import id.heycoding.core.BuildConfig
+import id.heycoding.home.data.remote.model.viewparam.homeitem.HomeUiItem
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.styling.databinding.ItemMoviePosterBinding
 
 /**
@@ -25,7 +24,7 @@ class UpcomingAdapter(private val listener: UpcomingAdapterClickListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HomeUpcomingViewHolder(
+        return HomeUpcomingViewHolderImpl(
             ItemMoviePosterBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -38,6 +37,26 @@ class UpcomingAdapter(private val listener: UpcomingAdapterClickListener) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as HomeUpcomingViewHolder).bindView(items[position] as HomeUiItem.UpcomingSectionItem)
+    }
+}
+
+interface HomeUpcomingViewHolder {
+    fun bindView(item: HomeUiItem.UpcomingSectionItem)
+}
+
+class HomeUpcomingViewHolderImpl(
+    private val binding: ItemMoviePosterBinding,
+    private val listener: UpcomingAdapterClickListener
+) : RecyclerView.ViewHolder(binding.root), HomeUpcomingViewHolder {
+    override fun bindView(item: HomeUiItem.UpcomingSectionItem) {
+        with(item.upcomingViewParam) {
+            val poster: String =
+                BuildConfig.BASE_URL_IMAGE + "w500" + this.posterPath
+            binding.ivPoster.load(poster)
+            itemView.setOnClickListener {
+                listener.onUpcomingMovieClicked(this)
+            }
+        }
     }
 }
 

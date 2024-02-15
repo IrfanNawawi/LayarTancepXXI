@@ -7,9 +7,9 @@ import id.heycoding.shared.data.remote.NetworkClient
 import id.heycoding.shared.data.remote.datasource.SharedFeatureApiDataSource
 import id.heycoding.shared.data.remote.datasource.SharedFeatureApiDataSourceImpl
 import id.heycoding.shared.data.remote.services.SharedFeatureApi
+import id.heycoding.shared.data.remote.services.interceptor.TmdbAuthInterceptor
 import id.heycoding.shared.data.repository.SharedApiRepository
 import id.heycoding.shared.data.repository.SharedApiRepositoryImpl
-import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -27,7 +27,8 @@ object SharedModules : BaseModules {
 
     private val remote = module {
         single { ChuckerInterceptor.Builder(androidContext()).build() }
-        single { NetworkClient(get()) }
+        single { TmdbAuthInterceptor() }
+        single { NetworkClient(get(), get()) }
         single<SharedFeatureApi> { get<NetworkClient>().create() }
     }
 

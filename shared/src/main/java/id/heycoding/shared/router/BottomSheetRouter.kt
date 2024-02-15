@@ -1,7 +1,7 @@
 package id.heycoding.shared.router
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 
 
 /**

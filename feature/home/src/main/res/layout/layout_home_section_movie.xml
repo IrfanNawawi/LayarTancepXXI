@@ -12,7 +12,7 @@
         android:id="@+id/tv_movie_popular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Popular Movie"
+        android:text="Popular"
         android:textColor="@color/white_900"
         android:textSize="16sp"
         android:visibility="gone"

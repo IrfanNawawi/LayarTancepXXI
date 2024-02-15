@@ -1,6 +1,5 @@
 package id.heycoding.home.presentation.ui.homefeeds
 
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,18 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import androidx.recyclerview.widget.SnapHelper
 import id.heycoding.core.base.BaseFragment
-import id.heycoding.home.R
 import id.heycoding.home.databinding.FragmentHomeFeedsBinding
 import id.heycoding.home.presentation.adapter.BannerAdapter
+import id.heycoding.home.presentation.adapter.BannerAdapterClickListener
 import id.heycoding.home.presentation.adapter.PopularAdapter
 import id.heycoding.home.presentation.adapter.PopularAdapterClickListener
 import id.heycoding.home.presentation.adapter.UpcomingAdapter
 import id.heycoding.home.presentation.adapter.UpcomingAdapterClickListener
 import id.heycoding.home.presentation.ui.home.HomeViewModel
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.shared.router.BottomSheetRouter
 import id.heycoding.shared.utils.ColorUtils
 import id.heycoding.shared.utils.ext.subscribe
+import id.heycoding.shared.utils.textdrawable.ColorGenerator
+import id.heycoding.shared.utils.textdrawable.TextDrawable
 import id.heycoding.styling.ProjectColor
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -37,7 +38,21 @@ class HomeFeedsFragment :
     }
 
     private val bannerAdapter: BannerAdapter by lazy {
-        BannerAdapter()
+        BannerAdapter(object : BannerAdapterClickListener {
+            override fun onMyListClicked(movieViewParam: MovieViewParam) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onPlayMovieClicked(movieViewParam: MovieViewParam) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onBannerMovieClicked(bannerViewParam: MovieViewParam) {
+                bottomSheetRouter.createMovieInfoBottomSheet(bannerViewParam)
+                    .show(childFragmentManager, null)
+            }
+
+        })
     }
 
     private val popularAdapter: PopularAdapter by lazy {
@@ -61,11 +76,22 @@ class HomeFeedsFragment :
     }
 
     override fun initView() {
-        setupRecyclerView()
+        setupView()
         initData()
     }
 
-    private fun setupRecyclerView() {
+    private fun setupView() {
+        binding.ivAvatarUser.setImageDrawable(
+            TextDrawable.builder()
+                .beginConfig()
+                .bold()
+                .toUpperCase()
+                .endConfig()
+                .buildRect(
+                    "I",
+                    ColorGenerator.MATERIAL.randomColor
+                )
+        )
         binding.layoutSectionHeader.apply {
             rvMovieBanner.apply {
                 adapter = bannerAdapter

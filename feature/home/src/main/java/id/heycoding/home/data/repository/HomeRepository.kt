@@ -1,9 +1,9 @@
 package id.heycoding.home.data.repository
 
 import id.heycoding.core.wrapper.DataResource
-import id.heycoding.home.data.network.datasource.HomeDataSource
-import id.heycoding.shared.data.model.response.BaseResponse
-import id.heycoding.shared.data.model.response.MovieResponse
+import id.heycoding.home.data.remote.datasource.HomeDataSource
+import id.heycoding.shared.data.remote.model.response.BaseResponse
+import id.heycoding.shared.data.remote.model.response.MovieResponse
 import id.heycoding.shared.data.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

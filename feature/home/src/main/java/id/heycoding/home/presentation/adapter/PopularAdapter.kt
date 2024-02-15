@@ -3,11 +3,10 @@ package id.heycoding.home.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
-import id.heycoding.home.presentation.adapter.viewholder.HomePopularViewHolder
-import id.heycoding.home.data.network.model.viewparam.homeitem.HomeUiItem
-import id.heycoding.home.presentation.adapter.viewholder.HomeBannerViewHolder
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import coil.load
+import id.heycoding.core.BuildConfig
+import id.heycoding.home.data.remote.model.viewparam.homeitem.HomeUiItem
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.styling.databinding.ItemMoviePosterBinding
 
 
@@ -26,7 +25,7 @@ class PopularAdapter(private val listener: PopularAdapterClickListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HomePopularViewHolder(
+        return HomePopularViewHolderImp(
             ItemMoviePosterBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -39,6 +38,26 @@ class PopularAdapter(private val listener: PopularAdapterClickListener) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as HomePopularViewHolder).bindView(items[position] as HomeUiItem.PopularSectionItem)
+    }
+}
+
+interface HomePopularViewHolder {
+    fun bindView(item: HomeUiItem.PopularSectionItem)
+}
+
+class HomePopularViewHolderImp(
+    private val binding: ItemMoviePosterBinding,
+    private val listener: PopularAdapterClickListener
+) : RecyclerView.ViewHolder(binding.root), HomePopularViewHolder {
+    override fun bindView(item: HomeUiItem.PopularSectionItem) {
+        with(item.popularViewParam) {
+            val poster: String =
+                BuildConfig.BASE_URL_IMAGE + "w500" + this.posterPath
+            binding.ivPoster.load(poster)
+            itemView.setOnClickListener {
+                listener.onPopularMovieClicked(this)
+            }
+        }
     }
 }
 

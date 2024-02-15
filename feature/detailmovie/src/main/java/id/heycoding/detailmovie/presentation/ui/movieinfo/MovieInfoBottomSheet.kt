@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import id.heycoding.core.BuildConfig
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.shared.router.ActivityRouter
 import id.heycoding.shared.utils.CommonUtils
 import id.heycoding.styling.databinding.BottomSheetMovieInfoBinding
@@ -69,18 +68,17 @@ class MovieInfoBottomSheet(private val movie: MovieViewParam) : BottomSheetDialo
 //            startActivity(activityRouter.playerActivity(requireContext(),movie.videoUrl))
         }
         binding.llShare.setOnClickListener {
-            CommonUtils.shareFilm(requireContext(), movie)
+            CommonUtils.shareFilm(requireContext(), movie.title, movie.posterPath)
         }
         binding.llMyList.setOnClickListener {
 //            viewModel.addOrRemoveWatchlist(movie)
         }
         binding.tvDetailMovie.setOnClickListener {
-//            startActivity(
-//                activityRouter.detailMovieActivity(
-//                    requireContext(),
-//                    movie.id.toString()
-//                )
-//            )
+            startActivity(
+                activityRouter.detailMovieActivity(
+                    requireContext(), movie.id.toString()
+                )
+            )
         }
     }
 

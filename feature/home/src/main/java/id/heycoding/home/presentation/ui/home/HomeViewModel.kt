@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import id.heycoding.core.wrapper.ViewResource
 import id.heycoding.home.domain.GetPopularMovieUseCase
 import id.heycoding.home.domain.GetUpcomingMovieUseCase
-import id.heycoding.home.data.network.model.viewparam.homeitem.HomeUiItem
+import id.heycoding.home.data.remote.model.viewparam.homeitem.HomeUiItem
 import kotlinx.coroutines.launch
 
 

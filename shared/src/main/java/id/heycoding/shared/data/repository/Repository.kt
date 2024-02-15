@@ -3,7 +3,6 @@ package id.heycoding.shared.data.repository
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
 import id.heycoding.core.base.BaseRepository
-import id.heycoding.shared.data.model.response.BaseResponse
 import okhttp3.ResponseBody
 import org.koin.java.KoinJavaComponent.inject
 

@@ -2,6 +2,7 @@ package id.heycoding.layartancepxxi.router
 
 import android.content.Context
 import android.content.Intent
+import id.heycoding.detailmovie.presentation.ui.detailmovie.DetailMovieActivity
 import id.heycoding.home.presentation.ui.home.HomeActivity
 import id.heycoding.login.presentation.ui.LoginActivity
 import id.heycoding.register.presentation.ui.RegisterActivity
@@ -24,5 +25,9 @@ class ActivityRouterImpl : ActivityRouter {
 
     override fun registerActivity(context: Context): Intent {
         return Intent(context, RegisterActivity::class.java)
+    }
+
+    override fun detailMovieActivity(context: Context, movieId: String): Intent {
+        return DetailMovieActivity.createIntent(context, movieId)
     }
 }

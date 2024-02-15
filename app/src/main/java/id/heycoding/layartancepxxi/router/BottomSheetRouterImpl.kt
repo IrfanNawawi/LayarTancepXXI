@@ -2,7 +2,7 @@ package id.heycoding.layartancepxxi.router
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import id.heycoding.detailmovie.presentation.ui.movieinfo.MovieInfoBottomSheet
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.shared.router.BottomSheetRouter
 
 

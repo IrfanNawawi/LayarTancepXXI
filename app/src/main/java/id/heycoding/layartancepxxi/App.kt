@@ -1,6 +1,7 @@
 package id.heycoding.layartancepxxi
 
 import android.app.Application
+import id.heycoding.detailmovie.di.DetailMovieModules
 import id.heycoding.home.di.HomeModules
 import id.heycoding.layartancepxxi.di.AppModules
 import id.heycoding.shared.di.SharedModules
@@ -23,7 +24,8 @@ class App : Application() {
             modules(
                 AppModules.getModules() +
                         SharedModules.getModules() +
-                        HomeModules.getModules()
+                        HomeModules.getModules() +
+                        DetailMovieModules.getModules()
             )
         }
     }

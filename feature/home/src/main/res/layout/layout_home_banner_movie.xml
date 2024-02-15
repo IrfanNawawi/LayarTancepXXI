@@ -14,5 +14,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="1"
-        tools:listitem="@layout/item_header_home" />
+        tools:listitem="@layout/item_movie_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>
