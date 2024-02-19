@@ -41,4 +41,6 @@ dependencies {
     implementation(project(":feature:login"))
     implementation(project(":feature:register"))
     implementation(project(":feature:home"))
+    implementation(project(":feature:detailmovie"))
+    implementation(project(":feature:player"))
 }

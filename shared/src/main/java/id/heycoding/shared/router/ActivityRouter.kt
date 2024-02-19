@@ -13,4 +13,6 @@ interface ActivityRouter {
     fun loginActivity(context: Context): Intent
     fun homeActivity(context: Context): Intent
     fun registerActivity(context: Context): Intent
+    fun detailMovieActivity(context: Context, movieId: String): Intent
+    fun playerActivity(context: Context, videoUrl: String): Intent
 }

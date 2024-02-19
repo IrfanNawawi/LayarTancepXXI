@@ -1,12 +1,10 @@
 package id.heycoding.layartancepxxi
 
 import android.app.Application
+import id.heycoding.detailmovie.di.DetailMovieModules
 import id.heycoding.home.di.HomeModules
 import id.heycoding.layartancepxxi.di.AppModules
-import id.heycoding.login.di.LoginModules
-import id.heycoding.register.di.RegisterModules
 import id.heycoding.shared.di.SharedModules
-import id.heycoding.splashscreen.di.SplashScreenModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -26,10 +24,8 @@ class App : Application() {
             modules(
                 AppModules.getModules() +
                         SharedModules.getModules() +
-                        SplashScreenModules.getModules() +
-                        LoginModules.getModules() +
-                        RegisterModules.getModules() +
-                        HomeModules.getModules()
+                        HomeModules.getModules() +
+                        DetailMovieModules.getModules()
             )
         }
     }
