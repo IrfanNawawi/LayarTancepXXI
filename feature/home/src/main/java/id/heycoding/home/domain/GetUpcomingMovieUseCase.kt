@@ -16,7 +16,10 @@ import kotlinx.coroutines.flow.flow
  * heycoding.tech
  * heycoding@gmail.com
  */
-class GetUpcomingMovieUseCase(private val repository: HomeRepository, dispatcher: CoroutineDispatcher) :
+class GetUpcomingMovieUseCase(
+    private val repository: HomeRepository,
+    dispatcher: CoroutineDispatcher
+) :
     BaseUseCase<Nothing, List<HomeUiItem>>(dispatcher) {
     override suspend fun execute(param: Nothing?): Flow<ViewResource<List<HomeUiItem>>> = flow {
         emit(ViewResource.Loading())
@@ -25,7 +28,7 @@ class GetUpcomingMovieUseCase(private val repository: HomeRepository, dispatcher
                 doOnSuccess = { result ->
                     val data = mutableListOf<HomeUiItem>()
                     result.payload?.data?.let { homeData ->
-                        homeData.forEach { movie->
+                        homeData.forEach { movie ->
                             data.add(HomeUiItem.UpcomingSectionItem(MovieMapper.toViewParam(movie)))
                         }
                     }

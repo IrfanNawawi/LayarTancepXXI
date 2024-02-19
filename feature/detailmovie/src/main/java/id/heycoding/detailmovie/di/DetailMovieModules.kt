@@ -21,11 +21,12 @@ import org.koin.dsl.module
  * heycoding.tech
  * heycoding@gmail.com
  */
-object DetailMovieModules: FeatureModules {
+object DetailMovieModules : FeatureModules {
 
     override fun getModules(): List<Module> = listOf(
         repositories, viewModels, dataSources, useCases, network
     )
+
     override val repositories: Module = module {
         single<DetailMovieRepository> { DetailMovieRepositoryImpl(get()) }
     }

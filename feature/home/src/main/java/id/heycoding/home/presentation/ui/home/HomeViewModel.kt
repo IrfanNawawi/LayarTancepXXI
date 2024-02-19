@@ -17,7 +17,8 @@ import kotlinx.coroutines.launch
  */
 class HomeViewModel(
     private val getPopularMovieUseCase: GetPopularMovieUseCase,
-    private val getUpcomingMovieUseCase: GetUpcomingMovieUseCase) : ViewModel() {
+    private val getUpcomingMovieUseCase: GetUpcomingMovieUseCase
+) : ViewModel() {
 
     val homePopularResult: MutableLiveData<ViewResource<List<HomeUiItem>>> = MutableLiveData()
     val homeUpcomingResult: MutableLiveData<ViewResource<List<HomeUiItem>>> = MutableLiveData()

@@ -104,12 +104,22 @@ class DetailMovieActivity :
                 flHeaderPoster.isVisible = false
                 containerPlayer.isVisible = true
                 supportFragmentManager.beginTransaction().apply {
-                    replace(containerPlayer.id, fragmentRouter.createPlayerFragment("https://www.youtube.com/watch?v=${video.elementAt(0).key}"))
+                    replace(
+                        containerPlayer.id,
+                        fragmentRouter.createPlayerFragment(
+                            BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
+                        )
+                    )
                 }
             }
         }
         binding.layoutDetail.clDetailMovie.cvPlay.setOnClickListener {
-            startActivity(activityRouter.playerActivity(this, "https://www.youtube.com/watch?v=${video.elementAt(0).key}"))
+            startActivity(
+                activityRouter.playerActivity(
+                    this,
+                    BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
+                )
+            )
         }
     }
 
@@ -124,7 +134,7 @@ class DetailMovieActivity :
 
     private fun loadPoster(url: String) {
         val poster: String =
-            BuildConfig.BASE_URL_IMAGE + "w300" + url
+            BuildConfig.BASE_URL_IMAGE.plus("w300").plus(url)
         binding.layoutDetail.layoutHeaderDetail.ivPosterDetail.load(poster)
     }
 

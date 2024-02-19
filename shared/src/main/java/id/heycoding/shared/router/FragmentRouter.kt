@@ -9,5 +9,5 @@ import androidx.fragment.app.Fragment
  * heycoding@gmail.com
  */
 interface FragmentRouter {
-    fun createPlayerFragment(videoUrl : String) : Fragment
+    fun createPlayerFragment(videoUrl: String): Fragment
 }

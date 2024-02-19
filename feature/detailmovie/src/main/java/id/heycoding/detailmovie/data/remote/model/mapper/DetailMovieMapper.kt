@@ -55,13 +55,15 @@ object DetailMovieMapper : ViewParamMapper<DetailMovieResponse, DetailMovieViewP
         )
 }
 
-object BelongToCollectionMapper : ViewParamMapper<BelongToCollectionResponse, BelongToCollectionViewParam> {
-    override fun toViewParam(dataObject: BelongToCollectionResponse?): BelongToCollectionViewParam = BelongToCollectionViewParam(
-        id = dataObject?.id.orNol(),
-        name = dataObject?.name.orEmpty(),
-        poster_path = dataObject?.poster_path.orEmpty(),
-        backdrop_path = dataObject?.backdrop_path.orEmpty(),
-    )
+object BelongToCollectionMapper :
+    ViewParamMapper<BelongToCollectionResponse, BelongToCollectionViewParam> {
+    override fun toViewParam(dataObject: BelongToCollectionResponse?): BelongToCollectionViewParam =
+        BelongToCollectionViewParam(
+            id = dataObject?.id.orNol(),
+            name = dataObject?.name.orEmpty(),
+            poster_path = dataObject?.poster_path.orEmpty(),
+            backdrop_path = dataObject?.backdrop_path.orEmpty(),
+        )
 }
 
 object GenreMapper : ViewParamMapper<GenreResponse, GenreViewParam> {

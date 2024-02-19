@@ -15,7 +15,8 @@ import id.heycoding.styling.databinding.ItemMovieHeaderBinding
  * heycoding.tech
  * heycoding@gmail.com
  */
-class BannerAdapter(private val listener: BannerAdapterClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BannerAdapter(private val listener: BannerAdapterClickListener) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val items = mutableListOf<HomeUiItem>()
     fun setItems(items: List<HomeUiItem>) {
         this.items.clear()

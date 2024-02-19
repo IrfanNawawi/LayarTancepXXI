@@ -15,7 +15,8 @@ import id.heycoding.core.utils.getErrorMessageByException
  * heycoding.tech
  * heycoding@gmail.com
  */
-abstract class BaseBottomSheet<B: ViewBinding>(val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> B) : BottomSheetDialogFragment() {
+abstract class BaseBottomSheet<B : ViewBinding>(val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> B) :
+    BottomSheetDialogFragment() {
 
     protected lateinit var binding: B
 
@@ -36,7 +37,7 @@ abstract class BaseBottomSheet<B: ViewBinding>(val bindingFactory: (LayoutInflat
 
     abstract fun initView()
 
-    open fun observeData(){}
+    open fun observeData() {}
 
     fun showError(isErrorEnabled: Boolean, exception: Exception) {
         if (isErrorEnabled) {

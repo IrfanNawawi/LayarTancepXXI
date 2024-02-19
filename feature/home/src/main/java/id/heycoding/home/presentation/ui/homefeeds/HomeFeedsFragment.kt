@@ -105,7 +105,10 @@ class HomeFeedsFragment :
                         super.onScrolled(recyclerView, dx, dy)
                         val scrollY: Int = rvMovieBanner.computeVerticalScrollOffset()
                         val color = ColorUtils.changeAlpha(
-                            ContextCompat.getColor(requireActivity(), ProjectColor.black_transparent),
+                            ContextCompat.getColor(
+                                requireActivity(),
+                                ProjectColor.black_transparent
+                            ),
                             (min(255, scrollY).toFloat() / 255.0f).toDouble()
                         )
                         binding.clToolbarHomeFeed.setBackgroundColor(color)
