@@ -16,7 +16,7 @@ object CommonUtils {
         return if (isUserWatchlist) ProjectDrawable.ic_check else ProjectDrawable.ic_add
     }
 
-    fun <T,P> shareFilm(context: Context, viewParamTitle: T, viewParamPoster: P) {
+    fun <T, P> shareFilm(context: Context, viewParamTitle: T, viewParamPoster: P) {
         val shareIntent = Intent.createChooser(Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(

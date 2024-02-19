@@ -14,12 +14,12 @@ import kotlin.math.max
  * heycoding.tech
  * heycoding@gmail.com
  */
-class ExoPlayerManagerImpl(private val playerView: StyledPlayerView): ExoPlayerManager {
-    private var player : ExoPlayer? = null
+class ExoPlayerManagerImpl(private val playerView: StyledPlayerView) : ExoPlayerManager {
+    private var player: ExoPlayer? = null
     private var startAutoPlay = false
     private var startItemIndex = 0
     private var startPosition: Long = 0L
-    private var currentMediaItem : MediaItem? = null
+    private var currentMediaItem: MediaItem? = null
     override fun play(videoUrl: String) {
         playPlayer(MediaItem.Builder().setUri(videoUrl).build(), false)
     }

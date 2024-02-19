@@ -16,7 +16,8 @@ interface DetailMovieDataSource {
     suspend fun fetchVideoMovie(movieId: String): VideoMovieResponse
 }
 
-class DetailMovieDataSourceImpl(private val service: DetailMovieFeatureApi): DetailMovieDataSource {
+class DetailMovieDataSourceImpl(private val service: DetailMovieFeatureApi) :
+    DetailMovieDataSource {
     override suspend fun fetchDetailMovie(movieId: String): DetailMovieResponse {
         return service.getDetailMovie(movieId)
     }

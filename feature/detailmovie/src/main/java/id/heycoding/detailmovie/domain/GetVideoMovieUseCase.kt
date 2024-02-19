@@ -17,7 +17,10 @@ import kotlinx.coroutines.flow.flow
  * heycoding.tech
  * heycoding@gmail.com
  */
-class GetVideoMovieUseCase(private val repository: DetailMovieRepository, dispatcher: CoroutineDispatcher): BaseUseCase<GetVideoMovieUseCase.Param, List<VideoViewParam>>(dispatcher) {
+class GetVideoMovieUseCase(
+    private val repository: DetailMovieRepository,
+    dispatcher: CoroutineDispatcher
+) : BaseUseCase<GetVideoMovieUseCase.Param, List<VideoViewParam>>(dispatcher) {
 
     override suspend fun execute(param: Param?): Flow<ViewResource<List<VideoViewParam>>> = flow {
         param?.let {
