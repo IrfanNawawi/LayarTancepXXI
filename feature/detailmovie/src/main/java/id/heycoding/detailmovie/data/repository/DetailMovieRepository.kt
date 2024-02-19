@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.flow
  */
 
 typealias DetailDataResource = DataResource<DetailMovieResponse>
-typealias VideoDataResource = DataResource<List<VideoResponse>>
+typealias VideoDataResource = DataResource<VideoMovieResponse>
 
 interface DetailMovieRepository {
     suspend fun fetchDetailMovie(movieId: String): Flow<DetailDataResource>

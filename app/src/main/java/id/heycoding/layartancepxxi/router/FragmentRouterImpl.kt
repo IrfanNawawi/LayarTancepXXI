@@ -1,6 +1,8 @@
 package id.heycoding.layartancepxxi.router
 
 import androidx.fragment.app.Fragment
+import id.heycoding.player.presentation.fragment.PlayerFragment
+import id.heycoding.shared.router.FragmentRouter
 
 
 /**
@@ -8,9 +10,9 @@ import androidx.fragment.app.Fragment
  * heycoding.tech
  * heycoding@gmail.com
  */
-//class FragmentRouterImpl : FragmentRouter {
-//    override fun createPlayerFragment(videoUrl: String): Fragment {
-////        return PlayerFragment.newInstance(videoUrl)
-//    }
-//
-//}
+class FragmentRouterImpl : FragmentRouter {
+    override fun createPlayerFragment(videoUrl: String): Fragment {
+        return PlayerFragment.newInstance(videoUrl)
+    }
+
+}

@@ -13,7 +13,7 @@ import id.heycoding.detailmovie.data.remote.service.DetailMovieFeatureApi
  */
 interface DetailMovieDataSource {
     suspend fun fetchDetailMovie(movieId: String): DetailMovieResponse
-    suspend fun fetchVideoMovie(movieId: String): List<VideoResponse>
+    suspend fun fetchVideoMovie(movieId: String): VideoMovieResponse
 }
 
 class DetailMovieDataSourceImpl(private val service: DetailMovieFeatureApi): DetailMovieDataSource {
@@ -21,7 +21,7 @@ class DetailMovieDataSourceImpl(private val service: DetailMovieFeatureApi): Det
         return service.getDetailMovie(movieId)
     }
 
-    override suspend fun fetchVideoMovie(movieId: String): List<VideoResponse> {
+    override suspend fun fetchVideoMovie(movieId: String): VideoMovieResponse {
         return service.getVideoMovie(movieId)
     }
 

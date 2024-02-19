@@ -2,6 +2,7 @@ package id.heycoding.detailmovie.presentation.ui.detailmovie
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.view.isVisible
 import coil.load
 import id.heycoding.core.BuildConfig
@@ -9,6 +10,8 @@ import id.heycoding.core.base.BaseActivity
 import id.heycoding.detailmovie.data.remote.model.viewparam.DetailMovieViewParam
 import id.heycoding.detailmovie.data.remote.model.viewparam.VideoViewParam
 import id.heycoding.detailmovie.databinding.ActivityDetailMovieBinding
+import id.heycoding.shared.router.ActivityRouter
+import id.heycoding.shared.router.FragmentRouter
 import id.heycoding.shared.utils.CommonUtils
 import id.heycoding.shared.utils.ext.subscribe
 import org.koin.android.ext.android.inject
@@ -23,7 +26,8 @@ class DetailMovieActivity :
     BaseActivity<ActivityDetailMovieBinding, DetailMovieViewModel>(ActivityDetailMovieBinding::inflate) {
 
     override val viewModel: DetailMovieViewModel by inject()
-//    private val fragmentRouter: FragmentRouter by inject()
+    private val activityRouter: ActivityRouter by inject()
+    private val fragmentRouter: FragmentRouter by inject()
     private val movieId: String? by lazy { intent?.extras?.getString(EXTRA_ID_MOVIE) }
 
     companion object {
@@ -100,16 +104,12 @@ class DetailMovieActivity :
                 flHeaderPoster.isVisible = false
                 containerPlayer.isVisible = true
                 supportFragmentManager.beginTransaction().apply {
-                    video.forEach {
-//                        replace(containerPlayer.id, fragmentRouter.createPlayerFragment(it.key))
-                    }
+                    replace(containerPlayer.id, fragmentRouter.createPlayerFragment("https://www.youtube.com/watch?v=${video.elementAt(0).key}"))
                 }
             }
         }
         binding.layoutDetail.clDetailMovie.cvPlay.setOnClickListener {
-            video.forEach {
-//                startActivity(activityRouter.playerActivity(this, it.key))
-            }
+            startActivity(activityRouter.playerActivity(this, "https://www.youtube.com/watch?v=${video.elementAt(0).key}"))
         }
     }
 

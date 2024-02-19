@@ -8,6 +8,6 @@ import androidx.fragment.app.Fragment
  * heycoding.tech
  * heycoding@gmail.com
  */
-//interface FragmentRouter {
-//    fun createPlayerFragment(videoUrl : String) : Fragment
-//}
+interface FragmentRouter {
+    fun createPlayerFragment(videoUrl : String) : Fragment
+}

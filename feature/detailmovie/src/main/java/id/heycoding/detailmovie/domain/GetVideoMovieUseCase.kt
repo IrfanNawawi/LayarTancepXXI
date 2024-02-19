@@ -25,7 +25,7 @@ class GetVideoMovieUseCase(private val repository: DetailMovieRepository, dispat
             repository.fetchVideoMovie(param.movieId).collect {
                 it.suspendSubscribe(
                     doOnSuccess = { result ->
-                        val videos = result.payload
+                        val videos = result.payload?.results
                         if (videos.isNullOrEmpty()) {
                             emit(ViewResource.Empty())
                         } else {

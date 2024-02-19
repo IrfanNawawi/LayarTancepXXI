@@ -13,6 +13,6 @@ import id.heycoding.shared.router.BottomSheetRouter
  */
 class BottomSheetRouterImpl : BottomSheetRouter {
     override fun createMovieInfoBottomSheet(movieViewParam: MovieViewParam): BottomSheetDialogFragment {
-        return MovieInfoBottomSheet(movieViewParam)
+        return MovieInfoBottomSheet.newInstance(movieViewParam)
     }
 }

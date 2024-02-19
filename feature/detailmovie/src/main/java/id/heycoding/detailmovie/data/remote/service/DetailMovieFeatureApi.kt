@@ -18,5 +18,5 @@ interface DetailMovieFeatureApi {
     suspend fun getDetailMovie(@Path("movie_id") movieId: String): DetailMovieResponse
 
     @GET("movie/{movie_id}/videos")
-    suspend fun getVideoMovie(@Path("movie_id") movieId: String): List<VideoResponse>
+    suspend fun getVideoMovie(@Path("movie_id") movieId: String): VideoMovieResponse
 }

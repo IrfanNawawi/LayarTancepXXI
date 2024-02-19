@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import id.heycoding.core.BuildConfig
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import id.heycoding.core.base.BaseBottomSheet
 import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.shared.router.ActivityRouter
 import id.heycoding.shared.utils.CommonUtils
@@ -19,25 +20,15 @@ import org.koin.android.ext.android.inject
  * heycoding.tech
  * heycoding@gmail.com
  */
-class MovieInfoBottomSheet(private val movie: MovieViewParam) : BottomSheetDialogFragment() {
-
-    private lateinit var binding: BottomSheetMovieInfoBinding
+class MovieInfoBottomSheet :
+    BaseBottomSheet<BottomSheetMovieInfoBinding>(BottomSheetMovieInfoBinding::inflate) {
+    private val movie: MovieViewParam? by lazy {
+        arguments?.getParcelable(ARG_MOVIE)
+    }
     private val activityRouter: ActivityRouter by inject()
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = BottomSheetMovieInfoBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        bindMovie(movie)
-        observeData()
+    override fun initView() {
+        movie?.let { bindMovie(it) }
     }
 
     private fun bindMovie(movie: MovieViewParam) {
@@ -82,20 +73,15 @@ class MovieInfoBottomSheet(private val movie: MovieViewParam) : BottomSheetDialo
         }
     }
 
-    private fun observeData() {
-//        viewModel.getWatchlistResult().observe(this) {
-//            it.subscribe(
-//                doOnSuccess = { result ->
-//                    result.payload?.let { movie ->
-//                        movie.isUserWatchlist = movie.isUserWatchlist
-//                        binding.ivWatchlist.setImageResource(CommonUtils.getWatchlistIcon(movie.isUserWatchlist))
-//                    }
-//                },
-//                doOnError = { error ->
-//                    Toast.makeText(requireContext(), error.message.orEmpty(), Toast.LENGTH_SHORT).show()
-//                }
-//            )
-//        }
-    }
+    companion object {
+        const val ARG_MOVIE = "ARG_MOVIE"
 
+        @JvmStatic
+        fun newInstance(movieViewParam: MovieViewParam) =
+            MovieInfoBottomSheet().apply {
+                arguments = Bundle().apply {
+                    putParcelable(ARG_MOVIE, movieViewParam)
+                }
+            }
+    }
 }
