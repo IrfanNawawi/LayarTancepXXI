@@ -91,7 +91,7 @@ class ExoPlayerManagerImpl(private val playerView: StyledPlayerView) : ExoPlayer
 
     override fun onPause(owner: LifecycleOwner) {
         super.onPause(owner)
-        if (Build.VERSION.SDK_INT > 23) {
+        if (Build.VERSION.SDK_INT <= 23) {
             playerView.onPause()
             releasePlayer()
         }
@@ -99,7 +99,7 @@ class ExoPlayerManagerImpl(private val playerView: StyledPlayerView) : ExoPlayer
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
-        if (Build.VERSION.SDK_INT > 23 || player == null) {
+        if (Build.VERSION.SDK_INT <= 23 || player == null) {
             initializePlayer()
             playerView.onResume()
         }

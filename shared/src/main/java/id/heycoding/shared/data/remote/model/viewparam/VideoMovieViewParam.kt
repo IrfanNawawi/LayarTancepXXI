@@ -1,4 +1,4 @@
-package id.heycoding.detailmovie.data.remote.model.viewparam
+package id.heycoding.shared.data.remote.model.viewparam
 
 
 /**

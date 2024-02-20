@@ -7,7 +7,6 @@ import id.heycoding.detailmovie.data.remote.service.DetailMovieFeatureApi
 import id.heycoding.detailmovie.data.repository.DetailMovieRepository
 import id.heycoding.detailmovie.data.repository.DetailMovieRepositoryImpl
 import id.heycoding.detailmovie.domain.GetDetailMovieUseCase
-import id.heycoding.detailmovie.domain.GetVideoMovieUseCase
 import id.heycoding.detailmovie.presentation.ui.detailmovie.DetailMovieViewModel
 import id.heycoding.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +37,6 @@ object DetailMovieModules : FeatureModules {
     }
     override val useCases: Module = module {
         single { GetDetailMovieUseCase(get(), Dispatchers.IO) }
-        single { GetVideoMovieUseCase(get(), Dispatchers.IO) }
     }
     override val network: Module = module {
         single<DetailMovieFeatureApi> { get<NetworkClient>().create() }

@@ -8,8 +8,8 @@ import coil.load
 import id.heycoding.core.BuildConfig
 import id.heycoding.core.base.BaseActivity
 import id.heycoding.detailmovie.data.remote.model.viewparam.DetailMovieViewParam
-import id.heycoding.detailmovie.data.remote.model.viewparam.VideoViewParam
 import id.heycoding.detailmovie.databinding.ActivityDetailMovieBinding
+import id.heycoding.shared.data.remote.model.viewparam.VideoViewParam
 import id.heycoding.shared.router.ActivityRouter
 import id.heycoding.shared.router.FragmentRouter
 import id.heycoding.shared.utils.CommonUtils
@@ -99,25 +99,25 @@ class DetailMovieActivity :
     }
 
     private fun bindVideo(video: List<VideoViewParam>) {
-        binding.layoutDetail.layoutHeaderDetail.apply {
-            ivPlayTrailer.setOnClickListener {
-                flHeaderPoster.isVisible = false
-                containerPlayer.isVisible = true
-                supportFragmentManager.beginTransaction().apply {
-                    replace(
-                        containerPlayer.id,
-                        fragmentRouter.createPlayerFragment(
-                            BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
-                        )
+        binding.layoutDetail.layoutHeaderDetail.ivPlayTrailer.setOnClickListener {
+            binding.layoutDetail.layoutHeaderDetail.flHeaderPoster.isVisible = false
+            binding.layoutDetail.layoutHeaderDetail.containerPlayer.isVisible = true
+            supportFragmentManager.beginTransaction().apply {
+                replace(
+                    binding.layoutDetail.layoutHeaderDetail.containerPlayer.id,
+                    fragmentRouter.createPlayerFragment(
+                        "https://github.com/dicodingacademy/assets/releases/download/release-video/VideoDicoding.mp4"
+//                                BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
                     )
-                }
-            }
+                )
+            }.commit()
         }
         binding.layoutDetail.clDetailMovie.cvPlay.setOnClickListener {
             startActivity(
                 activityRouter.playerActivity(
                     this,
-                    BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
+                    "https://github.com/dicodingacademy/assets/releases/download/release-video/VideoDicoding.mp4"
+//                    BuildConfig.BASE_URL_YOUTUBE_PLAY.plus(video.elementAt(0).key)
                 )
             )
         }
