@@ -10,6 +10,8 @@ import id.heycoding.shared.data.remote.services.SharedFeatureApi
 import id.heycoding.shared.data.remote.services.interceptor.TmdbAuthInterceptor
 import id.heycoding.shared.data.repository.SharedApiRepository
 import id.heycoding.shared.data.repository.SharedApiRepositoryImpl
+import id.heycoding.shared.domain.GetVideoMovieUseCase
+import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -41,6 +43,7 @@ object SharedModules : BaseModules {
     }
 
     private val sharedUseCase = module {
+        single { GetVideoMovieUseCase(get(), Dispatchers.IO) }
     }
 
     private val common = module {

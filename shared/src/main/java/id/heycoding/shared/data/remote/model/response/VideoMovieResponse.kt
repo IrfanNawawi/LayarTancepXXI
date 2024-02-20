@@ -1,4 +1,4 @@
-package id.heycoding.detailmovie.data.remote.model.response
+package id.heycoding.shared.data.remote.model.response
 
 data class VideoMovieResponse(
     val id: Int?,

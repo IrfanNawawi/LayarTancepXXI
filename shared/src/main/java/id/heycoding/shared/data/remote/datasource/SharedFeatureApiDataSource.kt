@@ -2,6 +2,7 @@ package id.heycoding.shared.data.remote.datasource
 
 import id.heycoding.shared.data.remote.model.request.DetailMovieRequest
 import id.heycoding.shared.data.remote.model.response.BaseResponse
+import id.heycoding.shared.data.remote.model.response.VideoMovieResponse
 import id.heycoding.shared.data.remote.services.SharedFeatureApi
 
 
@@ -13,6 +14,7 @@ import id.heycoding.shared.data.remote.services.SharedFeatureApi
 interface SharedFeatureApiDataSource {
     suspend fun addWatchlist(request: DetailMovieRequest): BaseResponse<Any>
     suspend fun removeWatchlist(request: DetailMovieRequest): BaseResponse<Any>
+    suspend fun fetchVideoMovie(movieId: String): VideoMovieResponse
 }
 
 class SharedFeatureApiDataSourceImpl(private val sharedFeatureApi: SharedFeatureApi) :
@@ -23,6 +25,10 @@ class SharedFeatureApiDataSourceImpl(private val sharedFeatureApi: SharedFeature
 
     override suspend fun removeWatchlist(request: DetailMovieRequest): BaseResponse<Any> {
         return sharedFeatureApi.removeWatchlist(request)
+    }
+
+    override suspend fun fetchVideoMovie(movieId: String): VideoMovieResponse {
+        return sharedFeatureApi.getVideoMovie(movieId)
     }
 
 }

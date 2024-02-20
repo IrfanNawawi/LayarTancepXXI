@@ -1,9 +1,9 @@
-package id.heycoding.detailmovie.data.remote.model.mapper
+package id.heycoding.shared.data.remote.model.mapper
 
-import id.heycoding.detailmovie.data.remote.model.response.VideoMovieResponse
-import id.heycoding.detailmovie.data.remote.model.response.VideoResponse
-import id.heycoding.detailmovie.data.remote.model.viewparam.VideoMovieViewParam
-import id.heycoding.detailmovie.data.remote.model.viewparam.VideoViewParam
+import id.heycoding.shared.data.remote.model.response.VideoMovieResponse
+import id.heycoding.shared.data.remote.model.response.VideoResponse
+import id.heycoding.shared.data.remote.model.viewparam.VideoMovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.VideoViewParam
 import id.heycoding.shared.utils.ext.orFalse
 import id.heycoding.shared.utils.ext.orNol
 import id.heycoding.shared.utils.mapper.ListMapper

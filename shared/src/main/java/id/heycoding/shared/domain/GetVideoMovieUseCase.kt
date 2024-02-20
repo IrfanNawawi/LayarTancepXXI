@@ -1,10 +1,10 @@
-package id.heycoding.detailmovie.domain
+package id.heycoding.shared.domain
 
 import id.heycoding.core.base.BaseUseCase
 import id.heycoding.core.wrapper.ViewResource
-import id.heycoding.detailmovie.data.remote.model.mapper.VideoMapper
-import id.heycoding.detailmovie.data.remote.model.viewparam.VideoViewParam
-import id.heycoding.detailmovie.data.repository.DetailMovieRepository
+import id.heycoding.shared.data.remote.model.mapper.VideoMapper
+import id.heycoding.shared.data.remote.model.viewparam.VideoViewParam
+import id.heycoding.shared.data.repository.SharedApiRepository
 import id.heycoding.shared.utils.ext.suspendSubscribe
 import id.heycoding.shared.utils.mapper.ListMapper
 import kotlinx.coroutines.CoroutineDispatcher
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flow
  * heycoding@gmail.com
  */
 class GetVideoMovieUseCase(
-    private val repository: DetailMovieRepository,
+    private val repository: SharedApiRepository,
     dispatcher: CoroutineDispatcher
 ) : BaseUseCase<GetVideoMovieUseCase.Param, List<VideoViewParam>>(dispatcher) {
 

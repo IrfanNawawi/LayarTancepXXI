@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.heycoding.core.wrapper.ViewResource
 import id.heycoding.detailmovie.data.remote.model.viewparam.DetailMovieViewParam
-import id.heycoding.detailmovie.data.remote.model.viewparam.VideoViewParam
 import id.heycoding.detailmovie.domain.GetDetailMovieUseCase
-import id.heycoding.detailmovie.domain.GetVideoMovieUseCase
+import id.heycoding.shared.data.remote.model.viewparam.VideoViewParam
+import id.heycoding.shared.domain.GetVideoMovieUseCase
 import kotlinx.coroutines.launch
 
 
