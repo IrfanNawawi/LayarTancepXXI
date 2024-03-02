@@ -100,6 +100,11 @@ dependencies {
     //coil
     api(Libraries.coil)
 
+    //room
+    api(Libraries.roomRuntime)
+    api(Libraries.roomKtx)
+    kapt(Libraries.roomCompiler)
+
     //core module
     api(project(":styling"))
 }

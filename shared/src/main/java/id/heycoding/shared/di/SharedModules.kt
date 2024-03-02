@@ -3,6 +3,10 @@ package id.heycoding.shared.di
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import id.heycoding.core.base.BaseModules
+import id.heycoding.shared.data.local.datasource.SharedLocalDataSource
+import id.heycoding.shared.data.local.datasource.SharedLocalDataSourceImpl
+import id.heycoding.shared.data.local.db.provideDao
+import id.heycoding.shared.data.local.db.provideDataBase
 import id.heycoding.shared.data.remote.NetworkClient
 import id.heycoding.shared.data.remote.datasource.SharedFeatureApiDataSource
 import id.heycoding.shared.data.remote.datasource.SharedFeatureApiDataSourceImpl
@@ -10,6 +14,9 @@ import id.heycoding.shared.data.remote.services.SharedFeatureApi
 import id.heycoding.shared.data.remote.services.interceptor.TmdbAuthInterceptor
 import id.heycoding.shared.data.repository.SharedApiRepository
 import id.heycoding.shared.data.repository.SharedApiRepositoryImpl
+import id.heycoding.shared.data.repository.SharedLocalRepository
+import id.heycoding.shared.data.repository.SharedLocalRepositoryImpl
+import id.heycoding.shared.domain.AddWatchlistMovieUseCase
 import id.heycoding.shared.domain.GetVideoMovieUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +31,7 @@ import org.koin.dsl.module
  */
 object SharedModules : BaseModules {
     override fun getModules(): List<Module> = listOf(
-        remote, dataSource, repository, sharedUseCase, common
+        remote, dataSource, repository, sharedUseCase, common, local
     )
 
     private val remote = module {
@@ -36,18 +43,26 @@ object SharedModules : BaseModules {
 
     private val dataSource = module {
         single<SharedFeatureApiDataSource> { SharedFeatureApiDataSourceImpl(get()) }
+        single<SharedLocalDataSource> { SharedLocalDataSourceImpl(get()) }
     }
 
     private val repository = module {
         single<SharedApiRepository> { SharedApiRepositoryImpl(get()) }
+        single<SharedLocalRepository> { SharedLocalRepositoryImpl(get())}
     }
 
     private val sharedUseCase = module {
         single { GetVideoMovieUseCase(get(), Dispatchers.IO) }
+        single { AddWatchlistMovieUseCase(get(), Dispatchers.IO)}
     }
 
     private val common = module {
         single { Gson() }
+    }
+
+    private val local = module {
+        single { provideDataBase(androidContext())}
+        single { provideDao(get()) }
     }
 
 }

@@ -25,7 +25,7 @@ object Libraries {
         const val retrofit = "2.9.0"
         const val koin = "3.2.0"
         const val chucker = "3.5.2"
-        const val room = "2.4.2"
+        const val room = "2.6.1"
         const val junit = "4.13.2"
         const val androidTestJunit = "1.1.3"
         const val espresso = "3.4.0"
@@ -66,5 +66,7 @@ object Libraries {
     const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
     const val swipeRefreshLayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
-
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 }
