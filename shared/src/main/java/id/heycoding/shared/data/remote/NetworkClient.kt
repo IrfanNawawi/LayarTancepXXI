@@ -2,7 +2,7 @@ package id.heycoding.shared.data.remote
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import id.heycoding.core.BuildConfig
-import id.heycoding.shared.domain.GetUserTokenUseCase
+import id.heycoding.shared.data.remote.services.interceptor.TmdbAuthInterceptor
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
@@ -18,26 +18,13 @@ import java.util.concurrent.TimeUnit
  * heycoding@gmail.com
  */
 class NetworkClient(
-    val getUserTokenUseCase: GetUserTokenUseCase,
-    val chuckerInterceptor: ChuckerInterceptor
+    val chuckerInterceptor: ChuckerInterceptor,
+    val tmdbAuthInterceptor: TmdbAuthInterceptor
 ) {
     inline fun <reified I> create(): I {
-        val authInterceptor = Interceptor {
-            val requestBuilder = it.request().newBuilder()
-            runBlocking {
-                getUserTokenUseCase().first { tokenResponse ->
-                    val token = tokenResponse.payload
-                    if (!token.isNullOrEmpty()) {
-                        requestBuilder.addHeader("Authorization", "Beare $token")
-                    }
-                    true
-                }
-            }
-            it.proceed(requestBuilder.build())
-        }
         // okhttp
         val okhhtp = OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
+            .addInterceptor(tmdbAuthInterceptor)
             .addInterceptor(chuckerInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
